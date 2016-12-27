@@ -1,0 +1,243 @@
+body {
+	overflow: hidden;
+}
+
+.iconOverlay {
+	background-color: rgba(0, 0, 0, 0.5);
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	overflow: hidden;
+}
+
+.centerPanel {
+	position: absolute;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.9);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	text-align: center;
+
+	width: 65%;
+	height: 60%;
+
+	border-radius: 10px;
+	border: 5px solid darkgray;
+}
+
+#helpPanel {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+
+	background-color: none;
+	pointer-events: none;
+}
+
+.homeHelpPanel {
+	position: absolute;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.85);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	/*text-align: center;
+
+	width: 65%;
+	height: 60%;*/
+}
+
+.homeIcon {
+	position: absolute;
+	width: 35px;
+	height: 35px;
+
+	top: 25px;
+	right: 25px;
+
+	border-radius: 50px;
+	border: 3px solid darkgray;
+
+	background-color: rgb(179, 0 ,0);
+}
+
+.aboutIcon {
+	position: absolute;
+	width: 35px;
+	height: 35px;
+
+	top: 25px;
+	right: 70px;
+
+	border-radius: 50px;
+	border: 3px solid darkgray;
+
+	background-color: rgb(179, 0 ,0);
+}
+
+.helpIcon {
+	position: absolute;
+	width: 35px;
+	height: 35px;
+
+	top: 25px;
+	right: 115px;
+
+	border-radius: 50px;
+	border: 3px solid darkgray;
+
+	background-color: rgb(179, 0 ,0);
+}
+
+.iconText {
+	position: absolute;
+
+	top: -28%;
+	left: 50%;
+
+	transform: translate(-50%, -50%);
+
+	text-align: center;
+
+	font-size: 28px;
+	font-weight: bold;
+	font-family: sans-serif;
+
+	color: white;
+
+	pointer-events: none;
+}
+
+.panelInfo {
+	position: absolute;
+	top: 10%;
+	/*left: 50%;*/
+
+	color: white;
+	font-family: sans-serif;
+	font-size: 24px;
+
+	/*transform: translate(-50%, -50%);*/
+}
+
+/********** help for each panel **********/
+.helpIconStar {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+
+	top: 9%;
+	left: 18%;
+
+	border-radius: 50px;
+	border: 2px solid darkgray;
+
+	/*background-color: gray;*/
+	background-color: rgb(179, 0 ,0);
+}
+
+.helpIconNomogram {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+
+	top: 9%;
+	left: 71%;
+
+	border-radius: 50px;
+	border: 2px solid darkgray;
+
+	background-color: rgb(179, 0 ,0);
+}
+
+.helpIconSurvival {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+
+	top: 54%;
+	left: 59.5%;
+
+	border-radius: 50px;
+	border: 2px solid darkgray;
+
+	background-color: rgb(179, 0 ,0);
+}
+
+.helpIconMosaic {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+
+	top: 54%;
+	left: 91.5%;
+
+	border-radius: 50px;
+	border: 2px solid darkgray;
+
+	background-color: rgb(179, 0 ,0);
+}
+
+.panelIconText {
+	position: absolute;
+
+	top: -28%;
+	left: 50%;
+
+	transform: translate(-50%, -50%);
+
+	text-align: center;
+
+	font-size: 16px;
+	font-weight: bold;
+	font-family: sans-serif;
+
+	color: white;
+
+	pointer-events: none;
+}
+
+#helpPanel-Star {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+
+	background-color: none;
+	pointer-events: none;
+}
+
+#helpPanel-Nomogram {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+
+	background-color: none;
+	pointer-events: none;
+}
+
+#helpPanel-Survival {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+
+	background-color: none;
+	pointer-events: none;
+}
+
+#helpPanel-Mosaic {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+
+	background-color: none;
+	pointer-events: none;
+}

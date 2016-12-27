@@ -1,0 +1,234 @@
+<html >
+    <head>
+      <link rel="stylesheet" type="text/css" href="./css/papaya.css" />
+      <link rel="stylesheet" type="text/css" href="./css/headNeck.css" />
+      <link rel="stylesheet"  type="text/css" href="css/icons.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    	<script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+      <script type="text/javascript" src="./js/papaya.js"></script>
+      <script type="text/javascript" src="./js/DoubleChoiceButton.js"></script>
+      <script type="text/javascript" src="./js/main.js"></script>
+      <script type="text/javascript" src="js/iconClicked.js"></script>
+
+      <!-- <title>Head and Neck Therapy</title> -->
+      <title>SMART Therapy Explorer</title>
+    </head>
+
+    <body style="top:0;left:0;width:100%;height:100%; position:absolute;" onload="init()">
+
+    	<!-- <div class="titleDiv">
+    		<p class="titleText">SMART Therapy Explorer</p>
+    	</div> -->
+      <div class="vizTitle">
+    		SMART Therapy Explorer
+    	</div>
+
+    	<div class="mainDiv">
+        <!-- leftDiv -->
+    		<!-- <div class="leftDiv">
+    			<div class="headSpace"></div>
+        	<div class="papaya" data-params="params"></div>
+			  </div>   -->
+
+        <!-- centerDiv -->
+			  <!-- <div class="centerDiv">
+				  <div id="doubleButton" class= "double-button-centered"> </div>
+			  	<div class="imgDiv" id= "nodesImageDiv">
+					  <p class="subTitleText" id= "nodesImageTitle">Affected Lymph Nodes</p>
+            	<img src="images/image3.jpg" style="width:100%;" id ="nodesImage">
+          </div>
+          <div class="plainListDiv">
+            <p class="subTitleText">Affected Lymph Nodes</p>
+            <select multiple size=11 class="form-control" id="nodeMultipleSelect">
+					    <option>Deep Cervical</option>
+					    <option>Occipital</option>
+					    <option>Parotid</option>
+					    <option>Posterior Auricular</option>
+					    <option>Posterior Cervical</option>
+					    <option>Preauricular</option>
+					    <option>Submandibular</option>
+					    <option>Submental</option>
+					    <option>Superclavicular</option>
+					    <option>Superficial Cervical</option>
+					    <option>Tonsillar</option>
+					  </select>
+				  </div>
+			  </div> -->
+
+        <div class="enterDiv">
+          <div id="doubleButton" class= "double-button-centered"> </div>
+				  <div id="enter_explore" class= "double-button-centered"> </div>
+				  <div class= "enterForm">
+	            <p class="h4"style="text-align:center;"> Enter Patient Details </p>
+	            <form action="mosaic.html" class="form-horizontal" method="GET" id="pform">
+	              <div class="form-group" id="idFormGroup">
+	                <label for="pid" class="control-label col-xs-4">Patient ID</label>
+	                <div class="col-xs-8">
+	                  <input type="text" class="form-control " id="pid" placeholder="Enter Patient ID" name="pid">
+	                </div>
+	              </div>
+	              <div class="form-group" id="nameFormGroup">
+	                <label for="pname" class="control-label col-xs-4">Patient Name</label>
+	                <div class="col-xs-8">
+	                  <input type="text" class="form-control" id="pname" placeholder="Enter patient Name" name="pname">
+	                </div>
+	              </div>
+	              <div class="form-group" id = "genderFormGroup">
+	                <label for="pname" class="control-label col-xs-4">Gender</label>
+	                <div class="col-xs-4">
+	                  <input type="radio" value="male" id="gender" name="gender"/> Male
+	                </div>
+	                <div class="col-xs-4">
+	                  <input type="radio" value="female" id="gender" name="gender"/> Female
+	                </div>
+	              </div>
+	              <div class="form-group" id="ageFormGroup">
+	                <label for="pname" class="control-label col-xs-4">Patient Age</label>
+	                <div class="col-xs-8">
+	                  <input type="text" class="form-control" id="page" placeholder="Enter patient age" name="page">
+	                </div>
+	              </div>
+	              <div class="form-group" id="ethnicityFormGroup">
+	                <label for="ethnicity" class="control-label col-xs-4"> Ethnicity </label>
+	                <div class="btn-group col-xs-8">
+	                            <!-- <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle" id="ethnicityButton">Select Ethnicity <span class="caret"></span></button>
+	                            <ul class="dropdown-menu">
+	                                <li><a href="#">African-American</a></li>
+	                                <li><a href="#">Asian</a></li>
+	                                <li><a href="#">Hispanic</a></li>
+	                                <li><a href="#">White</a></li>
+	                                <li><a href="#">Other</a></li>
+	                                <li><a href="#">All-Ethnicities</a> </li>
+	                            </ul> -->
+	                  <select class="form-control" id="ethnicitySelect">
+								      <option>Select Ethnicity</option>
+								      <option>African-American</option>
+								      <option>Hispanic</option>
+								      <option>White</option>
+								      <option>Other</option>
+								    </select>
+	                </div>
+	              </div>
+	              <div class="form-group" id="siteTumorFormGroup">
+	                <label for="site-tumor" class="control-label col-xs-4"> Site of Tumor </label>
+	                <div class="btn-group col-xs-8">
+	                  <select class="form-control" id="siteTumorSelect">
+                      <option>Select Site of Tumor</option>
+								      <option>Glottic</option>
+								      <option>Subglottic</option>
+								      <option>Supraglottic</option>
+								      <option>Transglottic</option>
+								    </select>
+	                </div>
+	              </div>
+                <div class="form-group" id="stageFormGroup">
+	                <label for="cancer-stage" class="control-label col-xs-4">Cancer Stage</label>
+	                <div class="col-xs-4">
+	                  <input type="radio" id="pstage" name="pstage" value="T3"/> T3
+	                </div>
+	                <div class="col-xs-4">
+	                  <input type="radio" id="pstage" name="pstage" value="T4"/> T4
+	                </div>
+	              </div>
+                <div class="buttonWrapper">
+	                <button type="submit" class="btn btn-success pull-right" id="submitButton">Submit</button>
+	              </div>
+	            </form>
+          </div>
+          <div class="exploreFormDiv">
+          	<p class="h4"style="text-align:center;"> Explore Data </p>
+          	<form action="mosaic.html" class="form-horizontal" method="GET" id="exploreForm">
+            	<div class="form-group" id="ethnicityExploreFormGroup">
+	              <label for="ethnicity" class="control-label col-xs-4"> Ethnicity </label>
+	              <div class="btn-group col-xs-8">
+	                            <!-- <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle" id="ethnicityButton">Select Ethnicity <span class="caret"></span></button>
+	                            <ul class="dropdown-menu">
+	                                <li><a href="#">African-American</a></li>
+	                                <li><a href="#">Asian</a></li>
+	                                <li><a href="#">Hispanic</a></li>
+	                                <li><a href="#">White</a></li>
+	                                <li><a href="#">Other</a></li>
+	                                <li><a href="#">All-Ethnicities</a> </li>
+	                            </ul> -->
+	                <select class="form-control" id="ethnicitySelect2">
+                    <option>Select Ethnicity</option>
+								    <option>African-American</option>
+								    <option>Hispanic</option>
+								    <option>White</option>
+								    <option>Other</option>
+								  </select>
+	              </div>
+	            </div>
+	            <div class="form-group" id="siteTumorExploreFormGroup">
+	              <label for="site-tumor" class="control-label col-xs-4"> Site of Tumor </label>
+	              <div class="btn-group col-xs-8">
+	                <select class="form-control" id="siteTumorSelect2">
+								    <option>Select Site of Tumor</option>
+								    <option>Glottic</option>
+								    <option>Subglottic</option>
+								    <option>Supraglottic</option>
+								    <option>Transglottic</option>
+								  </select>
+	              </div>
+	            </div>
+	            <div class="buttonWrapper">
+	              <button type="submit" class="btn btn-success pull-right" id="submitButton">Submit</button>
+	            </div>
+            </form>
+          </div>
+			  </div> <!-- rightDiv -->
+      </div> <!-- mainDiv -->
+
+      <!-- help/Info icon & screen -->
+      <div id="helpPanel" class="homeHelpPanel">
+        <!-- <div style="position:absolute;top:-80%;left:0%;width:30%;height:100%;color:white;background-color:rgba(0, 0, 0, 0.85);"> </div> -->
+        <div style="transform: translate(2%, 100%); color: white; font-size: 18px;">
+          The SMART Therapy Explorer allows you to search for patients
+          <br>
+          similar to yours through the University of Taxes MD Anderson
+          <br>
+          Cancer Center repository of head and neck cancer patients.
+        </div>
+
+        <div style="transform: translate(65%, 300%); color: white; font-size: 18px;">
+          To start exploring, please enter the details of your patient.
+        </div>
+
+      </div>
+
+      <div id="aboutPanel" class="centerPanel">
+    		<div class="panelInfo">
+    			ABOUT:
+    			<br><br>
+    			<!-- Info goes here for about -->
+    			The SMART THerapy Explorer is developed by agroup of researchers at the Electronic Visualization Lab, University of Illinois at Chicago under the direction of G.Elisabeta Marai.
+    			<br><br>
+    			Team members include: Filippo Pellolio, Chihua Ma and Andrew Burks
+    			<br><br>
+    			Please send all feedback and questions to marai@uic.edu
+    		</div>
+    	</div>
+
+      <div class="helpIcon" onclick="infoButtonClicked(this)">
+    		<p id="helpIconText" class="iconText" style="transform: translate(-50%, 10%);">
+    			?
+    		</p>
+    	</div>
+    	<div class="aboutIcon" onclick="infoButtonClicked(this)">
+    		<p id="aboutIconText" class="iconText" style="transform: translate(-50%, 10%);">
+    			i
+    		</p>
+    	</div>
+    	<!-- <div class="homeIcon" onclick="infoButtonClicked(this)">
+    		<p id="homeIconText" class="iconText" style="transform: translate(-50%, 10%);">
+    			H
+    		</p>
+    	</div> -->
+
+    </body>
+</html>

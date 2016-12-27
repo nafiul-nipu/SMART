@@ -1,0 +1,203 @@
+<html>
+<head>
+	<title>SMART Therapy Explorer</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" type="text/css" href="http://mostapharoudsari.github.io/Honeybee/pc_source_files/css/d3.parcoords.css"> -->
+	<link rel="stylesheet"  type="text/css" href="css/headNeck.css">
+	<link rel="stylesheet"  type="text/css" href="css/icons.css">
+	<!-- <link rel="stylesheet" href="css/icons.css" media="screen" title="no title" charset="utf-8"> -->
+
+	<script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+	<script src="https://andrewtburks.github.io/d3.nomogram/d3.nomogram.js"></script>
+  <!-- <script src="http://mostapharoudsari.github.io/Honeybee/pc_source_files/d3/d3.parcoords.js"></script> -->
+
+	<script type="text/javascript" src="js/mosaicInit.js"></script>
+	<script type="text/javascript" src="js/mosaicPlot.js"></script>
+	<script type="text/javascript" src="js/mosaicList.js"></script>
+	<script type="text/javascript" src="js/kaplanMeier.js"></script>
+	<script type="text/javascript" src="js/titleView.js"></script>
+	<script type="text/javascript" src="js/parallelChart.js"></script>
+	<script type="text/javascript" src="js/starPlot.js"></script>
+	<script type="text/javascript" src="js/knnPlot.js"></script>
+	<script type="text/javascript" src="js/d3-tip.js"></script>
+	<script type="text/javascript" src="js/nomogramLegend.js"></script>
+	<script type="text/javascript" src="js/nomogramPlot.js"></script>
+	<script type="text/javascript" src="js/knnNomogramPlot.js"></script>
+	<script type="text/javascript" src="js/slider.js"></script>
+  <script type="text/javascript" src="js/iconClicked.js"></script>
+	<script type="text/javascript" src="js/helpScreenArrow.js"></script>
+
+</head>
+<!-- init is inside mosaicInit -->
+<body onload="init()">
+	<div class="vizTitle">
+		SMART Therapy Explorer
+	</div>
+	<div class="vizContent">
+		<div id = "title1"> <h3>Most Similar Patients</h3></div>
+		<div id = "title2"> <h3>Survival Over Time</h3></div>
+		<div id = "title3"> <h3>Mosaic Context</h3></div>
+		<div id = "title4"> <h3>Nomogram Risk Prediction</h3>
+		<!-- <div id = "title4-checkbox"> -->
+			<form style="display:inline">
+				<input type="checkbox" style="display:inline" checked onchange="changeParallelDisplayed(this.checked)" > Show K-Nearest Neighbors</input>
+				<input type="checkbox" style="display:inline" id="knnFilters" unchecked onchange="applyKnnFilters(this.checked)" > Remove Filters from KNN Search</input>
+			</form>
+		</div>
+		<div class="titleView"></div>
+		<div class="leftDiv" id="chart1">  </div>
+	  <div class="centerDiv" id="chart2"> </div>
+	  <div class="rightDiv" id="chart3"> </div>
+		<!-- <div class="parcoordsAndControls">
+
+		</div> -->
+	  <div class="parcoords bottomDiv" id="chart4"> </div>
+	  <div class="parcoords bottomDiv" id="parallelChartForKNN" style="visibility:hidden"> </div>
+
+		<div id="radiobuttonFilters" class="radiobuttonFilters">
+			<label> <input type="radio" id="radio-AgeAtTx" value="AgeAtTx" checked onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
+			<label> <input type="radio" id="radio-Gender" value="Gender" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
+			<label> <input type="radio" id="radio-Ethnicity" value="Ethnicity" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
+			<label> <input type="radio" id="radio-Tcategory" value="Tcategory" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
+			<label> <input type="radio" id="radio-Site" value="Site" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
+			<label> <input type="radio" id="radio-Nodal_Disease" value="Nodal_Disease" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
+			<label> <input type="radio" id="radio-ecog" value="ecog" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
+			<label> <input type="radio" id="radio-Chemotherapy" value="Chemotherapy" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
+			<label> <input type="radio" id="radio-Local_Therapy" value="Local_Therapy" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
+			<label> <input type="radio" id="radio-Survival" value="Probability of Survival" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
+		</div>
+		<div id="checkboxFilters" class="checkboxFilters">
+				<label for="AgeAtTx"> <input type="checkbox" id="AgeAtTx" value="AgeAtTx" checked onchange="checkbox(this.id, this.checked)"> AgeAtTx </input> </label>
+				<label for="Gender"> <input type="checkbox" id="Gender" value="Gender" checked onchange="checkbox(this.id, this.checked)"> Gender </input> </label>
+				<label for="Ethnicity"> <input type="checkbox" id="Ethnicity" checked onchange="checkbox(this.id, this.checked)">  Ethnicity </input> </label>
+				<label for="Tcategory"> <input type="checkbox" id="Tcategory" checked onchange="checkbox(this.id, this.checked)"> Tcategory </input> </label>
+				<label for="Site"> <input type="checkbox" id="Site" checked onchange="checkbox(this.id, this.checked)"> Site </input> </label>
+				<label for="Nodal_Disease"> <input type="checkbox" id="Nodal_Disease" checked onchange="checkbox(this.id, this.checked)"> Nodal_Disease </input> </label>
+				<label for="ecog"> <input type="checkbox" id="ecog" checked onchange="checkbox(this.id, this.checked)"> ecog </input> </label>
+				<label for="Chemotherapy"> <input type="checkbox" id="Chemotherapy" checked onchange="checkbox(this.id, this.checked)"> Chemotherapy </input> </label>
+				<label for="Local_Therapy"> <input type="checkbox" id="Local_Therapy" checked onchange="checkbox(this.id, this.checked)"> Local_Therapy </input> </label>
+				<label for="Probability of Survival"> <input type="checkbox" id="Probability of Survival" checked onchange="checkbox(this.id, this.checked)"> 5-year Survival Pbty </input> </label>
+				<!-- <label> <input type="checkbox" id="Survival" value="Probability of Survival" checked onchange="checkbox(this.id, this.checked)"> Probability of Survival </input> </label> -->
+				<input type="button" id="updateAxes" value="Update">
+				<input type="button" id="resetAxes" value="Reset">
+		</div>
+
+		<div id="nomogramLegend" class="nomogramLegend"></div>
+		<div id="domainSlider" class="domainSlider"></div>
+		<div id="rangeSlider" class="rangeSlider"></div>
+		<div id="linkSlider" class="linkSlider"></div>
+
+  </div>
+
+  <!-- help/Info icon & screen -->
+	<div class="iconOverlay" onload="setupInfoButtons()">
+	</div>
+
+  <div id="helpPanel-Star">
+		<div style="position:absolute;top:7%;left:1.5%;width:19%;height:86%;color:white;background-color:rgba(0, 0, 0, 0.2);"> </div>
+		<div style="position:absolute;top:0%;left:0%;width:100%;height:7%;color:white;background-color:rgba(0, 0, 0, 0.9);"> </div>
+		<div style="position:absolute;top:93%;left:0%;width:100%;height:7%;color:white;background-color:rgba(0, 0, 0, 0.9);"> </div>
+		<div style="position:absolute;top:7%;left:0%;width:1.5%;height:86%;color:white;background-color:rgba(0, 0, 0, 0.9);"> </div>
+		<div style="position:absolute;top:7%;left:20.5%;width:79.5%;height:86%;color:white;background-color:rgba(0, 0, 0, 0.9);"> </div>
+		<div id="helpArrow-Star"> </div>
+	</div>
+
+
+	<div id="helpPanel-Nomogram">
+		<div style="position:absolute;top:7%;left:26%;width:72%;height:40%;color:white;background-color:rgba(0, 0, 0, 0.2);"> </div>
+		<div style="position:absolute;top:14%;left:44%;width:54%;height:15%;color:white;background-color:rgba(0, 0, 0, 0.8);"> </div>
+		<div style="position:absolute;top:0%;left:0%;width:100%;height:7%;color:white;background-color:rgba(0, 0, 0, 0.9);"> </div>
+		<div style="position:absolute;top:47%;left:0%;width:100%;height:53%;color:white;background-color:rgba(0, 0, 0, 0.9);"> </div>
+		<div style="position:absolute;top:7%;left:0%;width:26%;height:40%;color:white;background-color:rgba(0, 0, 0, 0.9);"> </div>
+		<div style="position:absolute;top:7%;left:98%;width:2%;height:40%;color:white;background-color:rgba(0, 0, 0, 0.9);"> </div>
+		<div id="helpArrow-Nomogram"> </div>
+	</div>
+
+	<div id="helpPanel-Survival">
+		<div style="position:absolute;top:51%;left:41%;width:24%;height:45%;color:white;background-color:rgba(0, 0, 0, 0.2);"> </div>
+		<div style="position:absolute;top:59%;left:41%;width:24%;height:37%;color:white;background-color:rgba(0, 0, 0, 0.75);"> </div>
+		<div style="position:absolute;top:0%;left:0%;width:100%;height:51%;color:white;background-color:rgba(0, 0, 0, 0.9);"> </div>
+		<div style="position:absolute;top:96%;left:0%;width:100%;height:4%;color:white;background-color:rgba(0, 0, 0, 0.9);"> </div>
+		<div style="position:absolute;top:51%;left:0%;width:41%;height:45%;color:white;background-color:rgba(0, 0, 0, 0.9);"> </div>
+		<div style="position:absolute;top:51%;left:65%;width:35%;height:45%;color:white;background-color:rgba(0, 0, 0, 0.9);"> </div>
+		<div id="helpArrow-Survival"> </div>
+	</div>
+
+	<div id="helpPanel-Mosaic">
+		<div style="position:absolute;top:51%;left:74%;width:21%;height:42%;color:white;background-color:rgba(0, 0, 0, 0.2);"> </div>
+		<div style="position:absolute;top:0%;left:0%;width:100%;height:51%;color:white;background-color:rgba(0, 0, 0, 0.9);"> </div>
+		<div style="position:absolute;top:93%;left:0%;width:100%;height:7%;color:white;background-color:rgba(0, 0, 0, 0.9);"> </div>
+		<div style="position:absolute;top:51%;left:0%;width:74%;height:42%;color:white;background-color:rgba(0, 0, 0, 0.9);"> </div>
+		<div style="position:absolute;top:51%;left:95%;width:5%;height:42%;color:white;background-color:rgba(0, 0, 0, 0.9);"> </div>
+		<div id="helpArrow-Mosaic"> </div>
+	</div>
+
+	<div class="helpIconStar" onclick="infoButtonClicked(this)">
+		<p id="helpIconText-Star" class="panelIconText">
+			?
+		</p>
+	</div>
+	<div class="helpIconNomogram" onclick="infoButtonClicked(this)">
+		<p id="helpIconText-Nomogram" class="panelIconText">
+			?
+		</p>
+	</div>
+	<div class="helpIconSurvival" onclick="infoButtonClicked(this)">
+		<p id="helpIconText-Survival" class="panelIconText">
+			?
+		</p>
+	</div>
+	<div class="helpIconMosaic" onclick="infoButtonClicked(this)">
+		<p id="helpIconText-Mosaic" class="panelIconText">
+			?
+		</p>
+	</div>
+
+	<div id="helpPanel">
+		<div style="position:absolute;top:0%;left:0%;width:100%;height:7%;color:white;background-color:rgba(0, 0, 0, 0.85);"> </div>
+		<div style="position:absolute;top:7%;left:0%;width:1.5%;height:93%;color:white;background-color:rgba(0, 0, 0, 0.85);"> </div>
+		<div style="position:absolute;top:7%;left:20.5%;width:6%;height:93%;color:white;background-color:rgba(0, 0, 0, 0.85);"> </div>
+		<div style="position:absolute;top:93%;left:1.5%;width:19%;height:7%;color:white;background-color:rgba(0, 0, 0, 0.85);"> </div>
+		<div style="position:absolute;top:45%;left:26.5%;width:73.5%;height:7%;color:white;background-color:rgba(0, 0, 0, 0.85);"> </div>
+		<div style="position:absolute;top:52%;left:26.5%;width:15%;height:48%;color:white;background-color:rgba(0, 0, 0, 0.85);"> </div>
+		<div style="position:absolute;top:52%;left:64%;width:10%;height:48%;color:white;background-color:rgba(0, 0, 0, 0.85);"> </div>
+		<div style="position:absolute;top:52%;left:95%;width:5%;height:48%;color:white;background-color:rgba(0, 0, 0, 0.85);"> </div>
+		<div style="position:absolute;top:96%;left:41.5%;width:22.5%;height:4%;color:white;background-color:rgba(0, 0, 0, 0.85);"> </div>
+		<div style="position:absolute;top:93%;left:74%;width:21%;height:6%;color:white;background-color:rgba(0, 0, 0, 0.85);"> </div>
+		<div style="position:absolute;top:7%;left:99%;width:1%;height:38%;color:white;background-color:rgba(0, 0, 0, 0.85);"> </div>
+		<div id="helpArrow"> </div>
+	</div>
+
+	<div id="aboutPanel" class="centerPanel">
+		<div class="panelInfo">
+			ABOUT:
+			<br><br>
+			<!-- Info goes here for about -->
+			The SMART Therapy Explorer is developed by agroup of researchers at the Electronic Visualization Lab, University of Illinois at Chicago under the direction of G.Elisabeta Marai.
+			<br><br>
+			Team members include: Filippo Pellolio, Chihua Ma and Andrew Burks
+			<br><br>
+			Please send all feedback and questions to marai@uic.edu
+		</div>
+	</div>
+
+	<div class="helpIcon" onclick="infoButtonClicked(this)">
+		<p id="helpIconText" class="iconText">
+			?
+		</p>
+	</div>
+	<div class="aboutIcon" onclick="infoButtonClicked(this)">
+		<p id="aboutIconText" class="iconText">
+			i
+		</p>
+	</div>
+	<div class="homeIcon" onclick="infoButtonClicked(this)">
+		<p id="homeIconText" class="iconText">
+			H
+		</p>
+	</div>
+
+</body>
+</html>
