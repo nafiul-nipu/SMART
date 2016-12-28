@@ -85,6 +85,10 @@ function knnPlot(where,data,filters,number){
 		}
 	}
 
+	for (var i=0; i<data.length; i++) {
+		d3.select("#mosaicPlotTip" + i).remove();
+	}
+
 	var c = new starPlot(elementDiv,data,number);
 
 	var y = 0;

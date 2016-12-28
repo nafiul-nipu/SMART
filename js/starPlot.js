@@ -29,7 +29,7 @@ function starPlot(where,data, number){
 
 	this.tip = d3.tip()
 		.attr('class', 'd3-tip')
-    .attr('id', 'mosaicPlotTip')
+    .attr('id', 'mosaicPlotTip' + number)
     .html(function(d) { return d.cat + ": "+d.val ;});
 
 	/* Invoke the tip in the context of your visualization */
@@ -56,6 +56,7 @@ function starPlot(where,data, number){
 		  .attr("d",d)
 			.attr("class","starPlotPath")
 			.style("fill",surviveScale(parseFloat(data[number]["Probability of Survival"])));
+			// .on("mouseover",this.tip.hide);
 
 		for (var i=0; i< nCat;i++){
 
