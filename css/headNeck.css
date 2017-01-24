@@ -227,9 +227,28 @@ label {
 }
 
 .fa {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+
 	color: gray;
 }
 
+.randomTooltip {
+	position: absolute;
+	display: none;
+
+	padding: 0.5vmin;
+
+	font-size: 2vmin;
+	text-align: center;
+
+	pointer-events: none;
+
+	border-radius: 0.5vmin;
+	color: white;
+	background-color: rgba(100, 100, 100, 0.4);
+}
 
 .label {
     display: inline;

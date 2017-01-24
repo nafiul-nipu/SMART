@@ -68,6 +68,22 @@ function mosaicPlot(where,data,callback,startFilters) {
 			that.showingPlot = !that.showingPlot;
 			that.listDiv.style("width", that.showingPlot? "0%" : "100%");
 			container.style("width", that.showingPlot? "100%" : "0%");
+		})
+		.on("mouseover", function(d) {
+			var evt = d3.event;
+
+			d3.select(".randomTooltip")
+				.style("display","initial")
+				.style("top", function(d) {
+					return evt.clientY - d3.select(this).node().clientHeight - 20 + "px";
+				})
+				.style("left", function(d) {
+					return evt.clientX - d3.select(this).node().clientWidth - 20 + "px";
+				});
+		})
+		.on("mouseout", function(d) {
+			d3.select(".randomTooltip")
+				.style("display", "none");
 		});
 
 	this.backButton.append("i").attr("class","fa fa-2x fa-bars");

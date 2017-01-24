@@ -13,8 +13,8 @@ var App = App || {};
 		if (knnNomogram.svg) {
 			knnNomogram.resize();
 		}
+	});
 
-	})
 })();
 
 // Visualization entry point
@@ -23,6 +23,13 @@ var copyAllData;  // 12.9.16 pass csv to it for func applyKnnFilters
 
 //Called onload
 function init(){
+
+	d3.select(".mosaicBackButtonDiv")
+		.on("mouseover", function(d) {
+			var evt = d3.event;
+
+			console.log(evt.screenX, evt.screenY);
+		});
 
 	// GET parameters
 	var queryString = window.location.search.substring(1);
