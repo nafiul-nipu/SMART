@@ -75,7 +75,7 @@ function knnNomogramPlots(where,id,data,categ){
   axisLabels["Probability of Survival"] = "5-year Survival Pbty";
 
 
-  knnNomogram = new Nomogram()
+  this.nomogram = knnNomogram = new Nomogram()
     .data(data)
     .target(id)
     .setAxes(axesKnnFiltered.map(el => {
@@ -107,11 +107,6 @@ function knnNomogramPlots(where,id,data,categ){
     .draw();
 
   axesKnnFiltered = [];
-
-  window.addEventListener("resize", function() {
-		console.log("Parent Resized");
-		myNomogram.draw();
-	});
 
 }
 

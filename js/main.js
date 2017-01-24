@@ -1,3 +1,5 @@
+var App = App || {};
+
 // first page entry point
 
 function onChangeViz(i) {

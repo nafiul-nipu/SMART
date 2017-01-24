@@ -1,3 +1,22 @@
+var App = App || {};
+
+(function() {
+	// create placeholders for when I attach window event listener
+	App.nomogram = new Nomogram();
+	App.nomogramKnn = new Nomogram();
+
+	window.addEventListener("resize", function() {
+		if (myNomogram.svg) {
+			myNomogram.resize();
+		}
+
+		if (knnNomogram.svg) {
+			knnNomogram.resize();
+		}
+
+	})
+})();
+
 // Visualization entry point
 
 var copyAllData;  // 12.9.16 pass csv to it for func applyKnnFilters
@@ -110,6 +129,7 @@ function init(){
           // console.log(cat[0]);
 					// var parallel = new parallelChart(".bottomDiv",data,cat[0])
 					var nomogram = new nomogramPlots(".bottomDiv","#chart4",data,csv,cat[0]);
+					App.nomogram = nomogram.nomogram;
 
 					kaplan.catChanged(function(catSel){
 						// console.log(catSel);
@@ -118,7 +138,10 @@ function init(){
 						d3.select("#rangeSlider").selectAll("*").remove();
 						d3.select("#linkSlider").selectAll("*").remove();
 						nomogram = new nomogramPlots(".bottomDiv","#chart4",data,csv,catSel);
+						App.nomogram = nomogram.nomogram;
+
 						var nomogramKnn = new knnNomogramPlots(".bottomDiv","#parallelChartForKNN",knnData,catSel);
+						App.nomogramKnn = nomogramKnn.nomogram;
 						changeParallelDisplayed(d3.select("#title4").selectAll('input').property('checked'));
 					});
 

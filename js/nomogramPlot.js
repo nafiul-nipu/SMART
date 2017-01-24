@@ -93,7 +93,7 @@ function nomogramPlots(where,id,data,allData,categ){
   axisLabels["Probability of Survival"] = "5-year Survival Pbty";
 
 
-	myNomogram = new Nomogram()
+	this.nomogram = myNomogram = new Nomogram()
     .data(data)
     .target(id)
     // .size({
