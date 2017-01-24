@@ -67,9 +67,9 @@ function starPlot(where,data, number){
 				.attr("x2",Math.cos( i * angleStep) * w/2)
 				.attr("y2",Math.sin( i * angleStep) * h/2)
 				.attr("class","starPlotAxis")
-				.datum({"cat": this.categories[i] , "val": data[number][this.categories[i]]})
-				.on("mouseover",this.tip.hide);
-				// .on("mouseover",this.tip.show)
+				.datum({"cat": this.categories[i] , "val": data[number][this.categories[i]]});
+				// .on("mouseover",this.tip.hide);
+				// .on("mouseover",this.tip.show);
 				// .on("mouseout",this.tip.hide);
 
 			svg.append("text")
@@ -77,9 +77,19 @@ function starPlot(where,data, number){
 			  .attr("y",Math.sin( i * angleStep) * h/3)
 			  .datum({"cat": this.categories[i] , "val": data[number][this.categories[i]]})
 			  .style("font-size","110%")
-			  .text(i)
-			  .on("mouseover",this.tip.show);
+				.style("pointer-events", "none")
+			  .text(i);
+			  // .on("mouseover",this.tip.show)
 			  // .on("mouseout",this.tip.hide);
+
+			svg.append("circle")
+				.attr("cx",Math.cos( i * angleStep) * w/3 + 8)
+				.attr("cy",Math.sin( i * angleStep) * h/3 - 8)
+				.attr("r", 16)
+				.style("fill-opacity", 0)
+				.datum({"cat": this.categories[i] , "val": data[number][this.categories[i]]})
+				.on("mouseover",this.tip.show)
+				.on("mouseout",this.tip.hide);
 		}
 	}
 

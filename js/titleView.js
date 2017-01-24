@@ -5,7 +5,8 @@ function titleView(where,filters){
 
 	this.container.selectAll("*").remove();
 	this.container.append("h6").attr("class","filterTitle").text("Showing: Total Data ")
-	              .attr("font-size", 10)
+	              // .attr("font-size", 10)
+								// .attr("font-size", 1.5vmin)
 								.on("click",function(d){
 										that.onFilterSelectedFunc([]);
 									});
@@ -16,7 +17,7 @@ function titleView(where,filters){
 	for (var i=0;i<filters.length / 2;i++){
 
 		var fil = this.container.append("h6").datum(i*2 +1).attr("class","filterTitle").text(""+filters[i*2].val+", "+filters[i*2 + 1].val + " ")
-		              .attr("font-size", 10)
+		              // .attr("font-size", 10)
 									.on("click",function(d){
 										var fil = [];
 										for (var j=0; j<=d;j++){
