@@ -125,6 +125,11 @@ function nomogramPlots(where,id,data,allData,categ){
 		.onMouseOut("reset-paths")
     .draw();
 
+	d3.select(id).on("resize", function() {
+		console.log("Parent Resized");
+		myNomogram.draw();
+	});
+
 	axesFiltered = [];
 
 

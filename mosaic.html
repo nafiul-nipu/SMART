@@ -54,35 +54,64 @@
 		<!-- <div class="parcoordsAndControls">
 
 		</div> -->
-	  <div class="parcoords bottomDiv" id="chart4"> </div>
+	  <div class="parcoords bottomDiv" id="chart4" > </div>
 	  <div class="parcoords bottomDiv" id="parallelChartForKNN" style="visibility:hidden"> </div>
 
-		<div id="radiobuttonFilters" class="radiobuttonFilters">
-			<label> <input type="radio" id="radio-AgeAtTx" value="AgeAtTx" checked onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
-			<label> <input type="radio" id="radio-Gender" value="Gender" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
-			<label> <input type="radio" id="radio-Ethnicity" value="Ethnicity" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
-			<label> <input type="radio" id="radio-Tcategory" value="Tcategory" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
-			<label> <input type="radio" id="radio-Site" value="Site" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
-			<label> <input type="radio" id="radio-Nodal_Disease" value="Nodal_Disease" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
-			<label> <input type="radio" id="radio-ecog" value="ecog" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
-			<label> <input type="radio" id="radio-Chemotherapy" value="Chemotherapy" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
-			<label> <input type="radio" id="radio-Local_Therapy" value="Local_Therapy" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
-			<label> <input type="radio" id="radio-Survival" value="Probability of Survival" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
-		</div>
-		<div id="checkboxFilters" class="checkboxFilters">
+		<div class="buttonWrapper">
+			<div class="">
+				<label> <input type="radio" id="radio-AgeAtTx" value="AgeAtTx" checked onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
 				<label for="AgeAtTx"> <input type="checkbox" id="AgeAtTx" value="AgeAtTx" checked onchange="checkbox(this.id, this.checked)"> AgeAtTx </input> </label>
+			</div>
+			<div class="">
+				<label> <input type="radio" id="radio-Gender" value="Gender" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
 				<label for="Gender"> <input type="checkbox" id="Gender" value="Gender" checked onchange="checkbox(this.id, this.checked)"> Gender </input> </label>
+			</div>
+			<div class="">
+				<label> <input type="radio" id="radio-Ethnicity" value="Ethnicity" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
 				<label for="Ethnicity"> <input type="checkbox" id="Ethnicity" checked onchange="checkbox(this.id, this.checked)">  Ethnicity </input> </label>
+
+			</div>
+			<div class="">
+				<label> <input type="radio" id="radio-Tcategory" value="Tcategory" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
 				<label for="Tcategory"> <input type="checkbox" id="Tcategory" checked onchange="checkbox(this.id, this.checked)"> Tcategory </input> </label>
+
+			</div>
+			<div class="">
+				<label> <input type="radio" id="radio-Site" value="Site" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
 				<label for="Site"> <input type="checkbox" id="Site" checked onchange="checkbox(this.id, this.checked)"> Site </input> </label>
+
+			</div>
+			<div class="">
+				<label> <input type="radio" id="radio-Nodal_Disease" value="Nodal_Disease" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
 				<label for="Nodal_Disease"> <input type="checkbox" id="Nodal_Disease" checked onchange="checkbox(this.id, this.checked)"> Nodal_Disease </input> </label>
+
+			</div>
+			<div class="">
+				<label> <input type="radio" id="radio-ecog" value="ecog" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
 				<label for="ecog"> <input type="checkbox" id="ecog" checked onchange="checkbox(this.id, this.checked)"> ecog </input> </label>
+
+			</div>
+			<div class="">
+				<label> <input type="radio" id="radio-Chemotherapy" value="Chemotherapy" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
 				<label for="Chemotherapy"> <input type="checkbox" id="Chemotherapy" checked onchange="checkbox(this.id, this.checked)"> Chemotherapy </input> </label>
+
+			</div>
+			<div class="">
+				<label> <input type="radio" id="radio-Local_Therapy" value="Local_Therapy" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
 				<label for="Local_Therapy"> <input type="checkbox" id="Local_Therapy" checked onchange="checkbox(this.id, this.checked)"> Local_Therapy </input> </label>
+
+			</div>
+			<div class="">
+				<label> <input type="radio" id="radio-Survival" value="Probability of Survival" onclick="radiobutton(this.id, this.value, this.checked)"> - </input></label>
 				<label for="Probability of Survival"> <input type="checkbox" id="Probability of Survival" checked onchange="checkbox(this.id, this.checked)"> 5-year Survival Pbty </input> </label>
-				<!-- <label> <input type="checkbox" id="Survival" value="Probability of Survival" checked onchange="checkbox(this.id, this.checked)"> Probability of Survival </input> </label> -->
+
+			</div>
+
+			<div class="selectButtonWrapper">
 				<input type="button" id="updateAxes" value="Update">
 				<input type="button" id="resetAxes" value="Reset">
+			</div>
+
 		</div>
 
 		<div id="nomogramLegend" class="nomogramLegend"></div>

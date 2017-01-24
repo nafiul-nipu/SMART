@@ -18,8 +18,7 @@ body{
 	width: 100%;
 	height: 5%;
 	text-align: center;
-	/*font-size: 32px;*/
-	font-size: 3vmin;
+	font-size: 32px;
 	font-weight: bold;
 	margin-top: 25px;
 	line-height: 0;
@@ -43,7 +42,6 @@ body{
 		left: -4%;
     width: 30%;
     height: 5%;
-		font-size: 2vmin;
     text-align: center;
     line-height: 0;
 }
@@ -53,7 +51,6 @@ body{
     top: 50%;
     width: 30%;
     height: 5%;
-		font-size: 2vmin;
     text-align: center;
     line-height: 0;
 }
@@ -63,7 +60,6 @@ body{
     top: 50%;
     width: 22%;
     height: 5%;
-		font-size: 2vmin;
     text-align: center;
     line-height: 0;
 }
@@ -73,7 +69,6 @@ body{
 		left: 25%;
     width: 75%;
     height: 5%;
-		font-size: 2vmin;
     text-align: center;
 		line-height: 0;
 }
@@ -159,23 +154,33 @@ body{
 }
 
 .radiobuttonFilters{
-  position: absolute;
-  left:27%; /* 1% -> 21% */
-  top: 12%;  /* 77% */
-  height: 25%;
-  width: 2%;
+	display: inline-block;
+
+  /*position: absolute;*/
+  /*left:27%; /* 1% -> 21% **/
+  /*top: 12%;  /* 77% **/
+  /*height: 25%;*/
+  /*width: 2%;*/
   /*background-color: orange;*/
 }
 
 .checkboxFilters{
-  position: absolute;
-	left:29%;
-	top: 12%;
-	height: 25%;
-	width: 10%;
+	display: inline-block;
+
+  /*position: absolute;*/
+	/*left:29%;*/
+	/*top: 12%;*/
+	/*height: 25%;*/
+	/*width: 10%;*/
   /*background-color: lightblue;*/
 }
 
+.buttonWrapper {
+	position: absolute;
+	left:27%;
+	top: 12%;
+
+}
 
 .linkSlider{
   position: absolute;
@@ -217,7 +222,7 @@ body{
 }
 
 label {
-  display: block;
+  display: inline-block;
 	font-size: 12;
 }
 
@@ -265,8 +270,7 @@ circle {
 
 .d3-tip:after {
     box-sizing: border-box;
-    /*font-size: 10px;*/
-		font-size: 1.5vmin;
+    font-size: 10px;
     width: 100%;
     line-height: 1;
     color: rgba(0, 0, 0, 0.8);
@@ -282,14 +286,12 @@ circle {
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
      border-radius: 2px;
-		 pointer-events: none;
 }
 
 .d3-tip.n:after {
     margin: -1px 0 0 0;
     top: 100%;
     left: 0;
-		pointer-events: none;
 }
 
 .titleDiv {
@@ -554,7 +556,6 @@ circle {
   background-color: #a6a6a6;
 	/*color: #fff;*/
 	color: black;
-	font-size: 1vmin;
 	cursor: pointer;
 }
 

@@ -108,6 +108,11 @@ function knnNomogramPlots(where,id,data,categ){
 
   axesKnnFiltered = [];
 
+  window.addEventListener("resize", function() {
+		console.log("Parent Resized");
+		myNomogram.draw();
+	});
+
 }
 
 
