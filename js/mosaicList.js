@@ -101,7 +101,7 @@ function mosaicList(where, list){
 		 })
 		.attr("fill","black")
 		.text(function(d){return d.text})
-		.call(drag)
+		.call(drag);
 
 
 	this.title = container.append("text")
@@ -143,6 +143,7 @@ function mosaicList(where, list){
 			this.list.push(this.data[i].text);
 		}
 
+		// console.log("mosaic-backButton-list: " + this.list);
 		this.onChangeFunc(this.list);
 	} // this.update end
 

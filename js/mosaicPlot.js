@@ -55,6 +55,13 @@ function mosaicPlot(where,data,callback,startFilters) {
 		that.categories = l;
 		that.filteredData = that.data;
 		that.filtersApplied = [];
+		//
+		// d3.select("#domainSlider").selectAll("*").remove();
+		// d3.select("#rangeSlider").selectAll("*").remove();
+		// d3.select("#linkSlider").selectAll("*").remove();
+		// sliderLeft = [0, 1];
+		// sliderRight = [0, 1];
+		/******************************/
 		that.showPlot();
 	})
 
@@ -75,10 +82,11 @@ function mosaicPlot(where,data,callback,startFilters) {
 			d3.select(".randomTooltip")
 				.style("display","initial")
 				.style("top", function(d) {
-					return evt.clientY - d3.select(this).node().clientHeight - 20 + "px";
+					return evt.clientY - d3.select(this).node().clientHeight - 40 + "px";
 				})
 				.style("left", function(d) {
-					return evt.clientX - d3.select(this).node().clientWidth - 20 + "px";
+					// return evt.clientX - d3.select(this).node().clientWidth - 20 + "px";
+					return evt.clientX - d3.select(this).node().clientWidth/2 + "px";
 				});
 		})
 		.on("mouseout", function(d) {
@@ -86,7 +94,21 @@ function mosaicPlot(where,data,callback,startFilters) {
 				.style("display", "none");
 		});
 
-	this.backButton.append("i").attr("class","fa fa-2x fa-bars");
+	// this.backButton.append("i").attr("class","fa fa-2x fa-bars");
+  var backButtonSvg = this.backButton.append("svg")
+	  .attr("x", 0)
+	  .attr("width", "5vmin")
+		.attr("height", "5vmin");
+
+	for (var i=0; i<3; i++) {
+		backButtonSvg.append("rect")
+			.attr("x", "0.4vw")
+			.attr("y", (0.6+i)+"vh")
+			.attr("width", "1.8vw")
+			.attr("height", "0.6vh")
+			.style("border-radius", 5)
+			.style("fill", "gray");
+	}
 
 	this.possibleValues = {};
 	var possibleValues = this.possibleValues;
@@ -241,9 +263,11 @@ function mosaicPlot(where,data,callback,startFilters) {
 			}
 		}
 
+		console.log(this.filtersApplied);
+		console.log([this.categories[0],this.categories[1]]);
+		console.log(this.filteredData);
 		this.onFilterFunc(this.filtersApplied,[this.categories[0],this.categories[1]],this.filteredData);
-
-	}
+	}  // end - showPlot
 
 
 	this.onClickFunction = function (cat1,val1,cat2,val2){
@@ -281,12 +305,11 @@ function mosaicPlot(where,data,callback,startFilters) {
 		// axes["Probability of Survival"] = true;
 		axesMosaic["Probability of Survival"] = true;
 
-		d3.select("#domainSlider").selectAll("*").remove();
-		d3.select("#rangeSlider").selectAll("*").remove();
-
-		d3.select("#linkSlider").selectAll("*").remove();
-		sliderLeft = [0, 1];
-		sliderRight = [0, 1];
+		// d3.select("#domainSlider").selectAll("*").remove();
+		// d3.select("#rangeSlider").selectAll("*").remove();
+		// d3.select("#linkSlider").selectAll("*").remove();
+		// sliderLeft = [0, 1];
+		// sliderRight = [0, 1];
 		/******************************/
 
 		this.showPlot();
@@ -315,6 +338,8 @@ function mosaicPlot(where,data,callback,startFilters) {
 
 		// Applies the filters in filters object to the data
 		this.filtersApplied = filters;
+
+		// console.log("mosaic-filtersApplied: " + this.filtersApplied);
 
 		var d = this.data;
 		this.filteredData = [];
@@ -370,12 +395,11 @@ function mosaicPlot(where,data,callback,startFilters) {
 		// axes["Probability of Survival"] = true;
 		axesMosaic["Probability of Survival"] = true;
 
-		d3.select("#domainSlider").selectAll("*").remove();
-		d3.select("#rangeSlider").selectAll("*").remove();
-
-		d3.select("#linkSlider").selectAll("*").remove();
-		sliderLeft = [0, 1];
-		sliderRight = [0, 1];
+		// d3.select("#domainSlider").selectAll("*").remove();
+		// d3.select("#rangeSlider").selectAll("*").remove();
+		// d3.select("#linkSlider").selectAll("*").remove();
+		// sliderLeft = [0, 1];
+		// sliderRight = [0, 1];
     /******************************/
 
 		this.showPlot();

@@ -74,6 +74,9 @@ function knnNomogramPlots(where,id,data,categ){
 	// axisLabels["Probability of Survival"] = "5 Year Probability of Survival";
   axisLabels["Probability of Survival"] = "5-year Survival Pbty";
 
+  var titlefontSize = 0.045 * Math.min(d3.select(id).node().clientWidth, d3.select(id).node().clientHeight);
+  var tickfontSize = titlefontSize * 0.9;
+  var strokewidth = 0.01 * Math.min(d3.select(id).node().clientWidth, d3.select(id).node().clientHeight);
 
   this.nomogram = knnNomogram = new Nomogram()
     .data(data)
@@ -93,13 +96,13 @@ function knnNomogramPlots(where,id,data,categ){
 		})
     .titlePosition("bottom")
     .titleRotation(-10)
-    .titleFontSize(14)
-		.tickFontSize(12)
+    .titleFontSize(titlefontSize)
+		.tickFontSize(tickfontSize)
     .color(colorFun)
     .opacity(0.7)
     .filteredOpacity(0)
     .strokeWidth((d) => {
-      return +d.id === selectedID ? 5:3;
+      return +d.id === selectedID ? strokewidth*5/3:strokewidth;
     })
     .brushable(true)
     .onMouseOver("hide-other")

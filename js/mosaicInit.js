@@ -13,6 +13,33 @@ var App = App || {};
 		if (knnNomogram.svg) {
 			knnNomogram.resize();
 		}
+
+		if (d3.select("#domainSlider").select("svg")) {
+			// console.log(d3.select(".sliders").node());
+			d3.select("#domainSlider").select("svg")
+			  .attr("width", Math.floor(d3.select("#domainSlider").node().parentNode.clientWidth / 3))
+				.attr("height", d3.select("#domainSlider").node().parentNode.clientHeight);
+				// .attr("width", d3.select(".sliders").node)
+		}
+
+		if (d3.select("#linkSlider").select("svg")) {
+			d3.select("#linkSlider").select("svg")
+			  .attr("width", Math.floor(d3.select("#linkSlider").node().parentNode.clientWidth / 3))
+				.attr("height", d3.select("#linkSlider").node().parentNode.clientHeight);
+		}
+
+		if (d3.select("#rangeSlider").select("svg")) {
+			d3.select("#rangeSlider").select("svg")
+			  .attr("width", Math.floor(d3.select("#rangeSlider").node().parentNode.clientWidth / 3))
+				.attr("height", d3.select("#rangeSlider").node().parentNode.clientHeight);
+		}
+
+		if (d3.select("#nomogramLegend").select("svg")) {
+			d3.select("#nomogramLegend").select("svg")
+			  .attr("width", d3.select("#nomogramLegend").node().clientWidth)
+				.attr("height", d3.select("#nomogramLegend").node().clientHeight);
+		}
+
 	});
 
 })();
@@ -141,9 +168,9 @@ function init(){
 					kaplan.catChanged(function(catSel){
 						// console.log(catSel);
 						// parallel = new parallelChart(".bottomDiv",data,catSel);
-						d3.select("#domainSlider").selectAll("*").remove();
-						d3.select("#rangeSlider").selectAll("*").remove();
-						d3.select("#linkSlider").selectAll("*").remove();
+						// d3.select("#domainSlider").selectAll("*").remove();
+						// d3.select("#rangeSlider").selectAll("*").remove();
+						// d3.select("#linkSlider").selectAll("*").remove();
 						nomogram = new nomogramPlots(".bottomDiv","#chart4",data,csv,catSel);
 						App.nomogram = nomogram.nomogram;
 
@@ -159,7 +186,7 @@ function init(){
 					})
 
 					// console.log(filters);
-					console.log(knnFilters);
+					console.log("knnFilters: " + knnFilters);
 
 					// var star = new knnPlot(".rightDiv",csv,filters);  // shouldn't apply the filters to knnPlot
 					// var star = new knnPlot(".rightDiv",csv,[]);
@@ -174,6 +201,12 @@ function init(){
 
 				}
 				,startFilters); // mosaicPlot() end
+
+				// for changing domain
+				drawSlider("#domainSlider", dataDomain["AgeAtTx"], "linear");
+				// for changing rangeShrink
+				drawSlider("#rangeSlider", [0, 1], "linear");
+				sliderLinking();
 
 		});
 	}); // Load data done

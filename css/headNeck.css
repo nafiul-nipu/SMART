@@ -18,7 +18,8 @@ body{
 	width: 100%;
 	height: 5%;
 	text-align: center;
-	font-size: 32px;
+	/*font-size: 32px;*/
+	font-size: 3vmin;
 	font-weight: bold;
 	margin-top: 25px;
 	line-height: 0;
@@ -31,10 +32,16 @@ body{
 
 .titleView {
     position: absolute;
-    /*width: 100%;*/
+    width: 24%;
 		height: 6%;
 		left: 75%;
 		top: 54%;
+		padding: 0;
+
+		box-sizing: border-box;
+
+		overflow-x: hidden;
+		overflow-y: scroll;
 }
 #title1{ /* star */
     position: absolute;
@@ -42,6 +49,7 @@ body{
 		left: -4%;
     width: 30%;
     height: 5%;
+		font-size: 2vmin;
     text-align: center;
     line-height: 0;
 }
@@ -51,6 +59,7 @@ body{
     top: 50%;
     width: 30%;
     height: 5%;
+		font-size: 2vmin;
     text-align: center;
     line-height: 0;
 }
@@ -60,6 +69,7 @@ body{
     top: 50%;
     width: 22%;
     height: 5%;
+		font-size: 2vmin;
     text-align: center;
     line-height: 0;
 }
@@ -69,6 +79,7 @@ body{
 		left: 25%;
     width: 75%;
     height: 5%;
+		font-size: 2vmin;
     text-align: center;
 		line-height: 0;
 }
@@ -79,6 +90,11 @@ body{
 	width: 80%;
 	height: 5%;
 	text-align: center;
+}
+
+#title4 input {
+	width: 1.5vmin;
+	height: 1.5vmin;
 }
 /*********/
 
@@ -149,7 +165,7 @@ body{
   left:80%;
   top: 12%;
   height: 10%;
-  width: 12%;
+  width: 10%;
   /*background-color: pink;*/
 }
 
@@ -179,35 +195,94 @@ body{
 	position: absolute;
 	left:27%;
 	top: 12%;
-
 }
 
-.linkSlider{
-  position: absolute;
-  left: 39%;
-  top: 12%;
-  width: 1%;
-  height: 30%;
-  /*background-color: lightblue;*/
+.radioCheckbox input {
+	width: 1.5vmin;
+	height: 1.5vmin;
+}
+
+.selectButtonWrapper input {
+	width: 6vmin;
+	height: 2.2vmin;
+
+	font-size: 1.5vmin;
+	text-align: center;
+
+	padding: 0;
+}
+
+label {
+  /*display: inline-block;*/
+	font-size: 1.4vmin;
+}
+
+.sliders {
+	position: absolute;
+
+	top: 12%;
+	left: 38%;
+
+	width: 3%;
+	height: 28%;
+
+	/*background-color: lightblue;*/
+  /*white-space: nowrap;*/
+}
+
+.w3-table {
+	position: relative;
+	width: 100%;
+	height: 100%;
+
+	padding: 0px;
+	margin: 0px;
+}
+
+td {
+	width: 33%;
 }
 
 .domainSlider{
-  position: absolute;
+  /*position: absolute;
   left: 38%;
   top: 12%;
   width: 1%;
-  height: 30%;
+  height: 30%;*/
   /*background-color: orange;*/
+
+	display: inline-block;
+	float:left;
+	width: 33%;
+  /*white-space: normal;*/
+}
+
+.linkSlider{
+  /*position: absolute;
+  left: 39%;
+  top: 12%;
+  width: 1%;
+  height: 30%;*/
+  /*background-color: lightblue;*/
+
+	display: inline-block;
+	float:left;
+	width: 34%;
+  /*white-space: normal;*/
 }
 
 .rangeSlider{
-  position: absolute;
+  /*position: absolute;
   left: 40%;
   top: 12%;
   width: 1%;
-  height: 30%;
-  float:left;
+  height: 30%;*/
   /*background-color: lightgreen;*/
+
+	display: inline-block;
+	float:left;
+	width: 33%;
+  /*white-space: normal;*/
 }
 
 .axis--grid .domain {
@@ -221,10 +296,6 @@ body{
   stroke: #cccccc;
 }
 
-label {
-  display: inline-block;
-	font-size: 12;
-}
 
 .fa {
 	position: relative;
@@ -240,14 +311,14 @@ label {
 
 	padding: 0.5vmin;
 
-	font-size: 2vmin;
+	font-size: 1.5vmin;
 	text-align: center;
 
 	pointer-events: none;
 
-	border-radius: 0.5vmin;
+	border-radius: 0.3vmin;
 	color: white;
-	background-color: rgba(100, 100, 100, 0.4);
+	background-color: rgba(0, 0, 0, 0.8);
 }
 
 .label {
@@ -264,7 +335,8 @@ label {
 }
 #tooltip{
     font-family: sans-serif;
-    font-size: 14px;
+    /*font-size: 14px;*/
+		font-size: 1.5vmin;
     font-weight: bold;
     color:black;
 }
@@ -289,7 +361,8 @@ circle {
 
 .d3-tip:after {
     box-sizing: border-box;
-    font-size: 10px;
+    /*font-size: 10px;*/
+		font-size: 1.5vmin;
     width: 100%;
     line-height: 1;
     color: rgba(0, 0, 0, 0.8);
@@ -301,10 +374,14 @@ circle {
 .d3-tip {
     line-height: 1;
     font-weight: bold;
-    padding: 12px;
+
+		padding: 0.5vmin;
+
+		font-size: 1.5vmin;
+
+		border-radius: 0.3vmin;
+		color: #fff;
     background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-     border-radius: 2px;
 }
 
 .d3-tip.n:after {
@@ -550,6 +627,8 @@ circle {
 	left: 80%;
 	width: 25%;
 	white-space: nowrap;
+
+	font-size: 1.4vmin;
 }
 
 .kaplanChooserDiv{
@@ -560,14 +639,19 @@ circle {
 }
 
 .color-box{
-	width: 10px;
+	/*width: 10px;
 	height: 10px;
-	margin-left: 3px;
+	margin-left: 3px;*/
 	display: inline-block;
+
+	width: 1.2vmin;
+	height: 1.2vmin;
+	margin-left: 0.6vmin;
 }
 
 .filterTitle{
 	display: inline-block;
+	margin: 2px;
 	margin-left: 10px;
 	border-radius: 5px;
 	padding: 5px;
@@ -575,7 +659,9 @@ circle {
   background-color: #a6a6a6;
 	/*color: #fff;*/
 	color: black;
+	font-size: 1vmin;
 	cursor: pointer;
+	float: left;
 }
 
 .starPlotAxis{
@@ -594,26 +680,42 @@ circle {
 .knnHeader{
     position: absolute;
     top:0%;
-    width: 40%;
     left: 20%;
+
+		width: 40%;
+		/*height: 2vmin;*/
 }
 
 .knnHeaderList{
     position: absolute;
     top:40%;
+		left: 0;
+
     width: 50%;
     height: 20%;
-    left: 0;
+
+		/*width: 5vmin;
+		height: 2vmin;*/
+
     text-align: right;
 }
 
 .knnHeaderElem{
     position: absolute;
     top:10%;
+		left: 10%;
+
     width: 100%;
     height: 19%;
-    left: 10%;
+
     font-size: 120%;
+}
+
+select, option {
+	width: 8vmin;
+	height: 2vmin;
+
+	font-size: 1.3vmin;
 }
 
 .knnLegendDiv{

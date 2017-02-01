@@ -35,6 +35,7 @@ function nomogramPlots(where,id,data,allData,categ){
 
 	drawLegend(nomogramLegend, cat);
 
+	/********************************************************************************/
 
 	Object.keys(axes).forEach((el) => {
 		if(axes[el]){
@@ -64,18 +65,19 @@ function nomogramPlots(where,id,data,allData,categ){
 			d3.select("#" + el).property("checked", false);
 		}
 
-		if (d3.select(radioID).property("checked")) {
-			// for changing domain
-			if (el === "AgeAtTx") {
-				drawSlider("#domainSlider", dataDomain[el], "linear");
-			} else if (el === "Probability of Survival") {
-				drawSlider("#domainSlider", dataDomain[el], "linear");
-			} else {
-				drawSlider("#domainSlider", dataDomain[el], "ordinal");
-			}
-			// for changing rangeShrink
-			drawSlider("#rangeSlider", [0, 1], "linear");
-		}
+		// if (d3.select(radioID).property("checked")) {
+		// 	// for changing domain
+		// 	if (el === "AgeAtTx") {
+		// 		drawSlider("#domainSlider", dataDomain[el], "linear");
+		// 	} else if (el === "Probability of Survival") {
+		// 		drawSlider("#domainSlider", dataDomain[el], "linear");
+		// 	} else {
+		// 		drawSlider("#domainSlider", dataDomain[el], "ordinal");
+		// 	}
+		// 	// for changing rangeShrink
+		// 	drawSlider("#rangeSlider", [0, 1], "linear");
+		// 	sliderLinking();
+		// }
 
 	});
 	// console.log(axesFiltered);
@@ -92,6 +94,11 @@ function nomogramPlots(where,id,data,allData,categ){
 	// axisLabels["Probability of Survival"] = "5 Year Probability of Survival";
   axisLabels["Probability of Survival"] = "5-year Survival Pbty";
 
+	/********************************************************************************/
+
+	var titlefontSize = 0.045 * Math.min(d3.select(id).node().clientWidth, d3.select(id).node().clientHeight);
+  var tickfontSize = titlefontSize * 0.9;
+  var strokewidth = 0.01 * Math.min(d3.select(id).node().clientWidth, d3.select(id).node().clientHeight);
 
 	this.nomogram = myNomogram = new Nomogram()
     .data(data)
@@ -114,12 +121,12 @@ function nomogramPlots(where,id,data,allData,categ){
 		})
 		.titlePosition("bottom")
 		.titleRotation(-10)
-		.titleFontSize(14)
-		.tickFontSize(12)
+		.titleFontSize(titlefontSize)
+		.tickFontSize(tickfontSize)
     .color(colorFun)
     .opacity(0.7)
     .filteredOpacity(0)
-    .strokeWidth(3)
+    .strokeWidth(strokewidth)
     .brushable(true)
 		.onMouseOver("hide-other")
 		.onMouseOut("reset-paths")
@@ -226,7 +233,9 @@ function nomogramPlots(where,id,data,allData,categ){
 
 		// d3.select("#title4").selectAll('input').property('checked', false);
 		// changeParallelDisplayed(d3.select("#title4").selectAll('input').property('checked'));
-    d3.select("#linkSlider").selectAll("*").remove();
+
+    // d3.select("#linkSlider").selectAll("*").remove();
+		d3.select("#linkSlider").style("visibility", "hidden");
 		sliderLeft = [0, 1];
 		sliderRight = [0, 1];
 	});
@@ -238,11 +247,17 @@ function nomogramPlots(where,id,data,allData,categ){
 function updatePCP() {
 	// console.log(axesFiltered);
 	// sliderLinking();
+  axesFiltered = [];
+	Object.keys(axes).forEach((el) => {
+    if(axes[el]){
+      axesFiltered.push(el);
+    }
+  });
 
   myNomogram.setAxes(axesFiltered.map(el => {
       return { name: el,
 				       label: axisLabels[el],
-               domain: axesDomain[el].map(d => d),
+               domain: axesDomain[el],
                rangeShrink: axesRange[el] };
     }),"reduce")
     .draw();
@@ -286,7 +301,8 @@ function radiobutton(id, val, check) {
 	}
 	drawSlider("#rangeSlider", [0, 1], "linear");  // for changing rangeShrink
 
-	d3.select("#linkSlider").selectAll("*").remove();
+	// d3.select("#linkSlider").selectAll("*").remove();
+	d3.select("#linkSlider").style("visibility", "hidden");
 	sliderLeft = [0, 1];
 	sliderRight = [0, 1];
 }
@@ -303,8 +319,11 @@ function sliderLinking() {
 	// console.log(sliderLeft);
 	// console.log(sliderRight);
 
-	var width = window.innerWidth * 0.01,
-      height = window.innerHeight * 0.27;
+	// var width = window.innerWidth * 0.01,
+  //     height = window.innerHeight * 0.27;
+
+	var width = Math.floor(d3.select("#domainSlider").node().parentNode.clientWidth/3),
+      height = d3.select("#domainSlider").node().parentNode.clientHeight;
 
 	var linkData = [{"x": 0, "y": height * (1 - sliderLeft[1])},
 	                {"x": width, "y": height * (1 - sliderRight[1])},
@@ -321,7 +340,9 @@ function sliderLinking() {
 
 	var svg = d3.select("#linkSlider").append("svg")
       .attr("width", width)
-      .attr("height", height);
+      .attr("height", height)
+			.attr("preserveAspectRatio", "none")
+			.attr("viewBox", "0 0 " + width + " " + height);
 
   if (sliderLeft[0] != 0 || sliderLeft[1] != 1) {
 	  var links = svg.append("path")
@@ -332,5 +353,7 @@ function sliderLinking() {
 			  .attr("fill", "#dddddd")
 			  .attr("opacity", "0.75");
 	}
+
+	d3.select("#linkSlider").style("visibility", "visible");
 
 }

@@ -54,15 +54,18 @@ body {
 
 .homeIcon {
 	position: absolute;
-	width: 35px;
-	height: 35px;
-	/*width: 2.5vmin;
-	height: 2.5vmin*/
+	/*width: 35px;
+	height: 35px;*/
+	width: 3vmin;
+	height: 3vmin;
 
-	top: 25px;
-	right: 25px;
+	/*top: 25px;
+	right: 25px;*/
+	top: 2%;
+	right: 1%;
 
-	border-radius: 50px;
+	/*border-radius: 50px;*/
+	border-radius: 4.5vmin;
 	border: 3px solid darkgray;
 
 	background-color: rgb(179, 0 ,0);
@@ -70,13 +73,18 @@ body {
 
 .aboutIcon {
 	position: absolute;
-	width: 35px;
-	height: 35px;
+	/*width: 35px;
+	height: 35px;*/
+	width: 3vmin;
+	height: 3vmin;
 
-	top: 25px;
-	right: 70px;
+	/*top: 25px;
+	right: 70px;*/
+	top: 2%;
+	right: 3.5%;
 
-	border-radius: 50px;
+	/*border-radius: 50px;*/
+	border-radius: 4.5vmin;
 	border: 3px solid darkgray;
 
 	background-color: rgb(179, 0 ,0);
@@ -84,30 +92,39 @@ body {
 
 .helpIcon {
 	position: absolute;
-	width: 35px;
-	height: 35px;
+	/*width: 35px;
+	height: 35px;*/
+	width: 3vmin;
+	height: 3vmin;
 
-	top: 25px;
-	right: 115px;
+	/*top: 25px;
+	right: 115px;*/
+	top: 2%;
+	right: 6%;
 
-	border-radius: 50px;
+	/*border-radius: 50px;*/
+	border-radius: 4.5vmin;
 	border: 3px solid darkgray;
 
 	background-color: rgb(179, 0 ,0);
 }
 
 .iconText {
-	position: absolute;
+	/*position: absolute;
 
 	top: -28%;
 	left: 50%;
 
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);*/
 
 	text-align: center;
 	vertical-align: middle;
 
-	font-size: 28px;
+	line-height: 3vmin;
+	margin: 0.4px;
+	font-size: 2.5vmin;
+
+	/*font-size: 28px;*/
 	font-weight: bold;
 	font-family: sans-serif;
 
@@ -137,7 +154,7 @@ body {
 	height: 1.8vmin;
 
 	top: 9%;
-	left: 18%;
+	left: 18.5%;
 
 	/*border-radius: 50px;*/
 	border-radius: 4.5vmin;
@@ -155,7 +172,7 @@ body {
 	height: 1.8vmin;
 
 	top: 9%;
-	left: 71%;
+	left: 72%;
 
 	/*border-radius: 50px;*/
 	border-radius: 4.5vmin;
@@ -171,8 +188,8 @@ body {
 	width: 1.8vmin;
 	height: 1.8vmin;
 
-	top: 54%;
-	left: 59.5%;
+	top: 53.5%;
+	left: 60%;
 
 	/*border-radius: 50px;*/
 	border-radius: 4.5vmin;
@@ -188,8 +205,8 @@ body {
 	width: 1.8vmin;
 	height: 1.8vmin;
 
-	top: 54%;
-	left: 91.5%;
+	top: 53.5%;
+	left: 92%;
 
 	/*border-radius: 50px;*/
 	border-radius: 4.5vmin;
@@ -211,7 +228,7 @@ body {
 	vertical-align: middle;
 	line-height: 1.8vmin;
 
-	margin: 0px;
+	margin: 0.5px;
 
 	font-size: 1.6vmin;
 	font-weight: bold;

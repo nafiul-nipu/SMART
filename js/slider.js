@@ -1,8 +1,13 @@
 
 function drawSlider(id, domain, type) {
 
-  var width = window.innerWidth * 0.01,
-      height = window.innerHeight * 0.27;
+  // d3.select(id).selectAll("*").remove();
+
+  // var width = window.innerWidth * 0.01,
+  //     height = window.innerHeight * 0.27;
+
+  var width = Math.floor(d3.select(id).node().parentNode.clientWidth / 3),
+      height = d3.select(id).node().parentNode.clientHeight;
 
   // var margin = {top: 20, right: 20, bottom: 50, left: 70},
   //     width = 960 - margin.left - margin.right,
@@ -18,7 +23,9 @@ function drawSlider(id, domain, type) {
 
   var svg = d3.select(id).append("svg")
       .attr("width", width)
-      .attr("height", height);
+      .attr("height", height)
+      .attr("preserveAspectRatio", "none")
+      .attr("viewBox", "0 0 " + width + " " + height);
     // .append("g")
       //.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -94,7 +101,8 @@ function drawSlider(id, domain, type) {
       updateKnnNomogram();
       changeParallelDisplayed(d3.select("#title4").selectAll('input').property('checked'));
 
-      d3.select("#linkSlider").selectAll("*").remove();
+      // d3.select("#linkSlider").selectAll("*").remove();
+      d3.select("#linkSlider").style("visibility", "hidden");
       sliderLeft = [0, 1];
   		sliderRight = [0, 1];
 

@@ -67,7 +67,8 @@ function starPlot(where,data, number){
 				.attr("x2",Math.cos( i * angleStep) * w/2)
 				.attr("y2",Math.sin( i * angleStep) * h/2)
 				.attr("class","starPlotAxis")
-				.datum({"cat": this.categories[i] , "val": data[number][this.categories[i]]});
+				.datum({"cat": this.categories[i] , "val": data[number][this.categories[i]]})
+				.style("pointer-events", "none");
 				// .on("mouseover",this.tip.hide);
 				// .on("mouseover",this.tip.show);
 				// .on("mouseout",this.tip.hide);
@@ -85,7 +86,7 @@ function starPlot(where,data, number){
 			svg.append("circle")
 				.attr("cx",Math.cos( i * angleStep) * w/3 + 8)
 				.attr("cy",Math.sin( i * angleStep) * h/3 - 8)
-				.attr("r", 16)
+				.attr("r", 20)
 				.style("fill-opacity", 0)
 				.datum({"cat": this.categories[i] , "val": data[number][this.categories[i]]})
 				.on("mouseover",this.tip.show)
