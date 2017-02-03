@@ -172,6 +172,9 @@ function nomogramPlots(where,id,data,allData,categ){
 			axes[el] = true;
 			// axesRange[el] = [0, 1];
 
+			delete myNomogram.filters[el];
+			delete knnNomogram.filters[el];
+
 			var radioID;
       if (el === "Probability of Survival") {
         radioID = "#radio-Survival";
@@ -216,9 +219,10 @@ function nomogramPlots(where,id,data,allData,categ){
 
 		if (d3.select("#knnFilters").property('checked')) {
 			var star = new knnPlot(".rightDiv",allData,knnFilters);
-		} else {
-			var star = new knnPlot(".rightDiv",allData,[]);
 		}
+		// else {
+		// 	var star = new knnPlot(".rightDiv",allData,[]);
+		// }
 		knnFilters = [];
 
 		// d3.select("#title4").selectAll('input').property('checked', false);
