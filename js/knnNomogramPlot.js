@@ -70,8 +70,6 @@ function knnNomogramPlots(where,id,data,categ){
 	Object.keys(axes).forEach(el => {
 		axisLabels[el] = null;
 	})
-
-	// axisLabels["Probability of Survival"] = "5 Year Probability of Survival";
   axisLabels["Probability of Survival"] = "5-year Survival Pbty";
 
   var titlefontSize = 0.045 * Math.min(d3.select(id).node().clientWidth, d3.select(id).node().clientHeight);
@@ -109,6 +107,11 @@ function knnNomogramPlots(where,id,data,categ){
 		.onMouseOut("reset-paths")
     .draw();
 
+  d3.select(id).on("resize", function() {
+		console.log("Parent Resized");
+		knnNomogram.draw();
+	});
+
   axesKnnFiltered = [];
 
 }
@@ -117,6 +120,7 @@ function knnNomogramPlots(where,id,data,categ){
 // func
 function updateKnnNomogram() {
 
+  axesKnnFiltered = [];
   Object.keys(axes).forEach((el) => {
     if(axes[el]){
       axesKnnFiltered.push(el);

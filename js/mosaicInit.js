@@ -186,8 +186,6 @@ function init(){
 					})
 
 					// console.log(filters);
-					console.log("knnFilters: " + knnFilters);
-
 					// var star = new knnPlot(".rightDiv",csv,filters);  // shouldn't apply the filters to knnPlot
 					// var star = new knnPlot(".rightDiv",csv,[]);
 

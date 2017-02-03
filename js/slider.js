@@ -109,7 +109,8 @@ function drawSlider(id, domain, type) {
       return;
     }
 
-    //var range = d3.event.selection.map(x.invert);
+    var selectedAxis;
+
     var rangeTemp = d3.event.selection.map(y.invert);
     var range = rangeTemp.reverse();
     // console.log(range);
@@ -129,6 +130,7 @@ function drawSlider(id, domain, type) {
 
       if(d3.select(radioID).property("checked")){
         // console.log(el);
+        selectedAxis = el;
 
         if (id === "#domainSlider") {
 
@@ -183,6 +185,9 @@ function drawSlider(id, domain, type) {
 
     // console.log(axesDomain);
     // console.log(axesRange);
+    
+    delete myNomogram.filters[selectedAxis];
+    delete knnNomogram.filters[selectedAxis];
 
     sliderLinking();
     updatePCP();

@@ -90,8 +90,6 @@ function nomogramPlots(where,id,data,allData,categ){
 	Object.keys(axes).forEach(el => {
 		axisLabels[el] = null;
 	})
-
-	// axisLabels["Probability of Survival"] = "5 Year Probability of Survival";
   axisLabels["Probability of Survival"] = "5-year Survival Pbty";
 
 	/********************************************************************************/
@@ -103,10 +101,6 @@ function nomogramPlots(where,id,data,allData,categ){
 	this.nomogram = myNomogram = new Nomogram()
     .data(data)
     .target(id)
-    // .size({
-    //   width: window.innerWidth * 0.88,
-    //   height: window.innerHeight * 0.25
-    // })
     .setAxes(axesFiltered.map(el => {
 	      return { name: el,
 								 label: axisLabels[el],
@@ -143,29 +137,25 @@ function nomogramPlots(where,id,data,allData,categ){
 	// update button
 	d3.select("#updateAxes").on("click", function() {
 
-		// console.log(allData);
 		Object.keys(axes).forEach((el) => {
 			if(axes[el] && axesMosaic[el]){
 				axesFiltered.push(el);
 			} else if(!axes[el]) {
-				// console.log(data);
-				// console.log(allData[selectedID]);
 				knnFilters.push({"cat": el, "val":allData[selectedID][el]});
 			}
 		});
-		// console.log(knnFilters);
-		// console.log(axes);
-		// console.log(axesFiltered);
+
 		updatePCP();
 		updateKnnNomogram();
 		changeParallelDisplayed(d3.select("#title4").selectAll('input').property('checked'));
 
-		// var star = new knnPlot(".rightDiv",allData,knnFilters);
+		// update star plots
 		if (d3.select("#knnFilters").property('checked')) {
 			var star = new knnPlot(".rightDiv",allData,knnFilters);
-		} else {
-			var star = new knnPlot(".rightDiv",allData,[]);
 		}
+		// else {
+		// 	var star = new knnPlot(".rightDiv",allData,[]);
+		// }
 		knnFilters = [];
 	});
 
