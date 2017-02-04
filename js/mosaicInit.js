@@ -14,19 +14,17 @@ var App = App || {};
 			knnNomogram.resize();
 		}
 
-		if (d3.select("#domainSlider").select("svg")) {
-			// console.log(d3.select(".sliders").node());
-			d3.select("#domainSlider").select("svg")
-			  .attr("width", Math.floor(d3.select("#domainSlider").node().parentNode.clientWidth / 3))
-				.attr("height", d3.select("#domainSlider").node().parentNode.clientHeight);
-				// .attr("width", d3.select(".sliders").node)
-		}
-
-		if (d3.select("#linkSlider").select("svg")) {
-			d3.select("#linkSlider").select("svg")
-			  .attr("width", Math.floor(d3.select("#linkSlider").node().parentNode.clientWidth / 3))
-				.attr("height", d3.select("#linkSlider").node().parentNode.clientHeight);
-		}
+		// if (d3.select("#domainSlider").select("svg")) {
+		// 	d3.select("#domainSlider").select("svg")
+		// 	  .attr("width", Math.floor(d3.select("#domainSlider").node().parentNode.clientWidth / 3))
+		// 		.attr("height", d3.select("#domainSlider").node().parentNode.clientHeight);
+		// }
+		//
+		// if (d3.select("#linkSlider").select("svg")) {
+		// 	d3.select("#linkSlider").select("svg")
+		// 	  .attr("width", Math.floor(d3.select("#linkSlider").node().parentNode.clientWidth / 3))
+		// 		.attr("height", d3.select("#linkSlider").node().parentNode.clientHeight);
+		// }
 
 		if (d3.select("#rangeSlider").select("svg")) {
 			d3.select("#rangeSlider").select("svg")
@@ -77,17 +75,6 @@ function init(){
     						        {"cat": "Tcategory","val" : tstage},{"cat": "Gender","val" : gender}];
   }
 
-	// hard coded
-	// axes["AgeAtTx"] = true;
-	// axes["Gender"] = true;
-	// axes["Ethnicity"] = true;
-	// axes["Tcategory"] = true;
-	// axes["Site"] = true;
-	// axes["Nodal_Disease"] = true;
-  // axes["ecog"] = true;
-	// axes["Chemotherapy"] = true;
-	// axes["Local_Therapy"] = true;
-	// axes["Probability of Survival"] = true;
 
   // Load data from the files
 	d3.csv("data/correctKaplanMeier.csv",function(error,csv){
@@ -98,18 +85,14 @@ function init(){
 		d3.csv("SurvivalProbability.csv",function(error,csv){
 
 			/******************** initialization ********************/
-			// console.log(d3.schemeCategory10);
 			csv.forEach(function(d){
 				d['AgeAtTx'] = +d['AgeAtTx'];
 				d['Probability of Survival'] = +d['Probability of Survival'];
 			});
 
-			// console.log(csv);
-
 			Object.keys(csv[0]).forEach((el) => {
 				axes[el] = true;
 				axesMosaic[el] = true;
-	      // axesRange[el] = [0, 1];
 				// hard coded
 				if (el === "AgeAtTx") {
 					dataDomain[el] = [90, 25];
@@ -150,7 +133,6 @@ function init(){
 
 			copyAllData = csv;
 
-			// console.log(axesDomain);
 			/************************************************************/
 
 			// Create the visualizations from the loaded data.
@@ -166,11 +148,7 @@ function init(){
 					App.nomogram = nomogram.nomogram;
 
 					kaplan.catChanged(function(catSel){
-						// console.log(catSel);
-						// parallel = new parallelChart(".bottomDiv",data,catSel);
-						// d3.select("#domainSlider").selectAll("*").remove();
-						// d3.select("#rangeSlider").selectAll("*").remove();
-						// d3.select("#linkSlider").selectAll("*").remove();
+
 						nomogram = new nomogramPlots(".bottomDiv","#chart4",data,csv,catSel);
 						App.nomogram = nomogram.nomogram;
 
@@ -196,15 +174,14 @@ function init(){
 					}
 
 					changeParallelDisplayed(d3.select("#title4").selectAll('input').property('checked'));
-
 				}
 				,startFilters); // mosaicPlot() end
 
 				// for changing domain
-				drawSlider("#domainSlider", dataDomain["AgeAtTx"], "linear");
+				// drawSlider("#domainSlider", dataDomain["AgeAtTx"], "linear");
 				// for changing rangeShrink
-				drawSlider("#rangeSlider", [0, 1], "linear");
-				sliderLinking();
+				drawSlider("#rangeSlider", [0, 1], "linear", [0, 1]);
+				// sliderLinking();
 
 		});
 	}); // Load data done
@@ -215,8 +192,8 @@ function init(){
 var knnData;
 var knnCat;
 
-function changeParallelDisplayed(knn){
 
+function changeParallelDisplayed(knn){
 	// toggle between the overall parallel chart and the only knn parallel chart
 	d3.select("#chart4").style("visibility",!knn?"visible":"hidden")
 	.style("pointer-events", !knn?"all":"none")
@@ -225,62 +202,12 @@ function changeParallelDisplayed(knn){
 	d3.select("#parallelChartForKNN").style("visibility",knn?"visible":"hidden")
 	.style("pointer-events", knn?"all":"none")
 	.selectAll("*").style("pointer-events", "inherit");
-
-	/*if (knn) {
-
-		// d3.select("#chart4").selectAll("*").style("visibility", "hidden");
-		// d3.select("#chart4").style("visibility", "hidden");
-		// var nomogram = new knnNomogramPlots(".bottomDiv","#parallelChartForKNN",knnData,knnCat);
-
-		Object.keys(axes).forEach((el) => {
-			d3.select("#" + el).property("checked", true);
-			d3.select("#" + el).property("disabled", true);
-			d3.select("#Probability of Survival").property("disabled", true);
-
-			if (el === "Probability of Survival") {
-					radioID = "#radio-Survival";
-			} else {
-					radioID = "#radio-" + el;
-			}
-			d3.select(radioID).property("disabled", true);
-		});
-
-	} else {
-
-    // d3.select("#parallelChartForKNN").selectAll("*").remove();
-		// d3.select("#chart4").style("visibility", "visible");
-		// d3.select("#chart4").selectAll("*").style("visibility", "visible");
-
-		Object.keys(axes).forEach((el) => {
-			if(!axes[el]){
-				d3.select("#" + el).property("checked", false);
-			}
-
-			if (el === "Probability of Survival") {
-					radioID = "#radio-Survival";
-			} else {
-					radioID = "#radio-" + el;
-			}
-
-			if(axesMosaic[el]){
-				d3.select("#" + el).property("disabled", false);
-			} else{
-				d3.select(radioID).property("disabled", true);
-			}
-		});
-
-	}*/
 }
 
 
 function applyKnnFilters(removeKnnFilter) {
 	Object.keys(axes).forEach((el) => {
-		// if(axes[el] && axesMosaic[el]){
-		// 	axesFiltered.push(el);
-		// } else
 		if(!axes[el]) {
-			// console.log(data);
-			// console.log(allData[selectedID]);
 			knnFilters.push({"cat": el, "val":copyAllData[selectedID][el]});
 		}
 	});

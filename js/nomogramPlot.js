@@ -20,16 +20,11 @@ var myNomogram;
 // Create the interactive nomograms that have the flexibity for the translations,scaling and removing axes
 function nomogramPlots(where,id,data,allData,categ){
 
-	// this.container = d3.select(where);
-	// this.container.selectAll("*").remove();
 	d3.select(id).selectAll("*").remove();
 
-	// console.log(d3.schemeCategory10);
-	// var colors = d3.scaleOrdinal(category10colors);
 	var cat = categ;
 
 	var colorFun = function(d) {
-	  // console.log(colors(d[cat]));
 		return colors(d[cat]);
 	};
 
@@ -43,49 +38,23 @@ function nomogramPlots(where,id,data,allData,categ){
 		}
 
 		var radioID;
-		// console.log(el);
+
 		if (el === "Probability of Survival") {
 			radioID = "#radio-Survival";
 		} else {
 			radioID = "#radio-" + el;
 		}
 
-		// if(axesMosaic[el]){
 		if(axes[el]){  // show knn always
 			d3.select("#" + el).property("checked", true);
-			// d3.select("#" + el).property("disabled", false);
-			// d3.select(radioID).property("disabled", false);
 		} else{
 			d3.select("#" + el).property("checked", false);
-			// d3.select("#" + el).property("disabled", true);
-			// d3.select(radioID).property("disabled", true);
 		}
 
 		if(!axes[el]) {
 			d3.select("#" + el).property("checked", false);
 		}
-
-		// if (d3.select(radioID).property("checked")) {
-		// 	// for changing domain
-		// 	if (el === "AgeAtTx") {
-		// 		drawSlider("#domainSlider", dataDomain[el], "linear");
-		// 	} else if (el === "Probability of Survival") {
-		// 		drawSlider("#domainSlider", dataDomain[el], "linear");
-		// 	} else {
-		// 		drawSlider("#domainSlider", dataDomain[el], "ordinal");
-		// 	}
-		// 	// for changing rangeShrink
-		// 	drawSlider("#rangeSlider", [0, 1], "linear");
-		// 	sliderLinking();
-		// }
-
 	});
-	// console.log(axesFiltered);
-  // console.log(axesMosaic);
-
-	// drawSlider("#domainSlider", [30, 90], "linear");  // for changing domain --- default: AgeAtTx[30, 90]
-	// drawSlider("#rangeSlider", [0, 1], "linear");  // for changing rangeShrink
-	// let axisLabels = {};
 
 	Object.keys(axes).forEach(el => {
 		axisLabels[el] = null;
@@ -153,9 +122,6 @@ function nomogramPlots(where,id,data,allData,categ){
 		if (d3.select("#knnFilters").property('checked')) {
 			var star = new knnPlot(".rightDiv",allData,knnFilters);
 		}
-		// else {
-		// 	var star = new knnPlot(".rightDiv",allData,[]);
-		// }
 		knnFilters = [];
 	});
 
@@ -163,14 +129,13 @@ function nomogramPlots(where,id,data,allData,categ){
 	// reset button
 	d3.select("#resetAxes").on("click", function() {
 
-		d3.select("#domainSlider").selectAll("*").remove();
+		// d3.select("#domainSlider").selectAll("*").remove();
 		d3.select("#rangeSlider").selectAll("*").remove();
 
 		d3.select("#knnFilters").property("checked", false);
 
 		Object.keys(axes).forEach((el) => {
 			axes[el] = true;
-			// axesRange[el] = [0, 1];
 
 			delete myNomogram.filters[el];
 			delete knnNomogram.filters[el];
@@ -182,7 +147,6 @@ function nomogramPlots(where,id,data,allData,categ){
         radioID = "#radio-" + el;
       }
 
-			// if(axesMosaic[el]){
 			if(axes[el]){  // show knn always
 				axesFiltered.push(el);
 				d3.select("#" + el).property("checked", true);
@@ -200,11 +164,11 @@ function nomogramPlots(where,id,data,allData,categ){
 
 			if (d3.select(radioID).property("checked")) {
 				// for changing domain
-				if (el === "AgeAtTx" || el === "Probability of Survival") {
-					drawSlider("#domainSlider", dataDomain[el], "linear");
-				} else {
-					drawSlider("#domainSlider", dataDomain[el], "ordinal");
-				}
+				// if (el === "AgeAtTx" || el === "Probability of Survival") {
+				// 	drawSlider("#domainSlider", dataDomain[el], "linear");
+				// } else {
+				// 	drawSlider("#domainSlider", dataDomain[el], "ordinal");
+				// }
 				// for changing rangeShrink
 				drawSlider("#rangeSlider", [0, 1], "linear");
 			}
@@ -220,18 +184,11 @@ function nomogramPlots(where,id,data,allData,categ){
 		if (d3.select("#knnFilters").property('checked')) {
 			var star = new knnPlot(".rightDiv",allData,knnFilters);
 		}
-		// else {
-		// 	var star = new knnPlot(".rightDiv",allData,[]);
-		// }
 		knnFilters = [];
 
-		// d3.select("#title4").selectAll('input').property('checked', false);
-		// changeParallelDisplayed(d3.select("#title4").selectAll('input').property('checked'));
-
-    // d3.select("#linkSlider").selectAll("*").remove();
-		d3.select("#linkSlider").style("visibility", "hidden");
-		sliderLeft = [0, 1];
-		sliderRight = [0, 1];
+		// d3.select("#linkSlider").style("visibility", "hidden");
+		// sliderLeft = [0, 1];
+		// sliderRight = [0, 1];
 	});
 
 }
@@ -239,8 +196,7 @@ function nomogramPlots(where,id,data,allData,categ){
 
 // func
 function updatePCP() {
-	// console.log(axesFiltered);
-	// sliderLinking();
+
   axesFiltered = [];
 	Object.keys(axes).forEach((el) => {
     if(axes[el]){
@@ -264,41 +220,49 @@ function updatePCP() {
 // func
 function checkbox(id, val) {
 	axes[id] = val;
-	// console.log(axes);
 }
 
 
 // func
 function radiobutton(id, val, check) {
+	let existingAxisRange;
 
 	Object.keys(axes).forEach((el) => {
-		if (el != val) {
-			var radioID;
-			if (el === "Probability of Survival") {
-				radioID = "#radio-Survival";
-			} else {
-				radioID = "#radio-" + el;
-			}
-			d3.select(radioID).property("checked", false);
+		var radioID;
+		if (el === "Probability of Survival") {
+			radioID = "#radio-Survival";
+		} else {
+			radioID = "#radio-" + el;
 		}
-		// console.log(d3.select("#radio-" + el).property("checked"));
+
+		if (el != val) {
+			d3.select(radioID).property("checked", false);
+		} else {
+			if (d3.select(radioID).property("checked")) {
+				let currentRangeSliderAxis = knnNomogram.plotAxes.filter((d) => d.name === el);
+
+				if (currentRangeSliderAxis[0]) {
+					existingAxisRange = currentRangeSliderAxis[0].rangeShrink;
+				}
+			}
+		}
 	});
 
-	d3.select("#domainSlider").selectAll("*").remove();
+	console.log(existingAxisRange);
+
+	// d3.select("#domainSlider").selectAll("*").remove();
+	// if (val === "AgeAtTx" || val === "Probability of Survival") {
+	// 	drawSlider("#domainSlider", dataDomain[val], "linear");
+	// } else {
+	// 	drawSlider("#domainSlider", dataDomain[val], "ordinal");
+	// }
+
 	d3.select("#rangeSlider").selectAll("*").remove();
+	drawSlider("#rangeSlider", [0, 1], "linear", existingAxisRange);  // for changing rangeShrink
 
-	if (val === "AgeAtTx" || val === "Probability of Survival") {
-		drawSlider("#domainSlider", dataDomain[val], "linear");
-	} else {
-		drawSlider("#domainSlider", dataDomain[val], "ordinal");
-		// console.log(dataDomain[val].length);
-	}
-	drawSlider("#rangeSlider", [0, 1], "linear");  // for changing rangeShrink
-
-	// d3.select("#linkSlider").selectAll("*").remove();
-	d3.select("#linkSlider").style("visibility", "hidden");
-	sliderLeft = [0, 1];
-	sliderRight = [0, 1];
+	// d3.select("#linkSlider").style("visibility", "hidden");
+	// sliderLeft = [0, 1];
+	// sliderRight = [0, 1];
 }
 
 
@@ -306,48 +270,37 @@ function radiobutton(id, val, check) {
 var sliderLeft = [0, 1];
 var sliderRight = [0, 1];
 
-function sliderLinking() {
-
-	d3.select("#linkSlider").selectAll("*").remove();
-
-	// console.log(sliderLeft);
-	// console.log(sliderRight);
-
-	// var width = window.innerWidth * 0.01,
-  //     height = window.innerHeight * 0.27;
-
-	var width = Math.floor(d3.select("#domainSlider").node().parentNode.clientWidth/3),
-      height = d3.select("#domainSlider").node().parentNode.clientHeight;
-
-	var linkData = [{"x": 0, "y": height * (1 - sliderLeft[1])},
-	                {"x": width, "y": height * (1 - sliderRight[1])},
-									{"x": width, "y": height * (1 - sliderRight[0])},
-									{"x": 0, "y": height * (1 - sliderLeft[0])},
-								  {"x": 0, "y": height * (1 - sliderLeft[1])}];
-
-	var linkFunc = d3.line()
-	    .x(function(d) { return d.x; })
-			.y(function(d) { return d.y; });
-			// .interpolate("linear");
-
-	// console.log(linkData);
-
-	var svg = d3.select("#linkSlider").append("svg")
-      .attr("width", width)
-      .attr("height", height)
-			.attr("preserveAspectRatio", "none")
-			.attr("viewBox", "0 0 " + width + " " + height);
-
-  if (sliderLeft[0] != 0 || sliderLeft[1] != 1) {
-	  var links = svg.append("path")
-	      .attr("d", linkFunc(linkData))
-			  // .attr("stroke", "black")
-			  // .attr("stroke-width", "1")
-			  .attr("stroke", "none")
-			  .attr("fill", "#dddddd")
-			  .attr("opacity", "0.75");
-	}
-
-	d3.select("#linkSlider").style("visibility", "visible");
-
-}
+// function sliderLinking() {
+//
+// 	d3.select("#linkSlider").selectAll("*").remove();
+//
+// 	var width = Math.floor(d3.select("#domainSlider").node().parentNode.clientWidth/3),
+//       height = d3.select("#domainSlider").node().parentNode.clientHeight;
+//
+// 	var linkData = [{"x": 0, "y": height * (1 - sliderLeft[1])},
+// 	                {"x": width, "y": height * (1 - sliderRight[1])},
+// 									{"x": width, "y": height * (1 - sliderRight[0])},
+// 									{"x": 0, "y": height * (1 - sliderLeft[0])},
+// 								  {"x": 0, "y": height * (1 - sliderLeft[1])}];
+//
+// 	var linkFunc = d3.line()
+// 	    .x(function(d) { return d.x; })
+// 			.y(function(d) { return d.y; });
+// 			// .interpolate("linear");
+//
+// 	var svg = d3.select("#linkSlider").append("svg")
+//       .attr("width", width)
+//       .attr("height", height)
+// 			.attr("preserveAspectRatio", "none")
+// 			.attr("viewBox", "0 0 " + width + " " + height);
+//
+//   if (sliderLeft[0] != 0 || sliderLeft[1] != 1) {
+// 	  var links = svg.append("path")
+// 	      .attr("d", linkFunc(linkData))
+// 			  .attr("stroke", "none")
+// 			  .attr("fill", "#dddddd")
+// 			  .attr("opacity", "0.75");
+// 	}
+//
+// 	d3.select("#linkSlider").style("visibility", "visible");
+// }

@@ -15,7 +15,6 @@ function knnNomogramPlots(where,id,data,categ){
   var cat = categ;
 
 	var colorFun = function(d) {
-    // console.log(colors(d[cat]));
     if(+d.id === selectedID) {
       return "black";
     } else {
@@ -24,53 +23,18 @@ function knnNomogramPlots(where,id,data,categ){
 	};
 
 
-  /******************** only draw axes with multiple values ********************/
-  // var ageMin = d3.min(data, function(d) { return d.AgeAtTx; });
-  // var ageMax = d3.max(data, function(d) { return d.AgeAtTx; });
-  // axesKnnDomain["AgeAtTx"] = [Math.floor(ageMin), Math.ceil(ageMax)];
-  //
-  // var survivalMin = d3.min(data, function(d) { return d["Probability of Survival"]; });
-  // var survivalMax = d3.max(data, function(d) { return d["Probability of Survival"]; });
-  // axesKnnDomain["Probability of Survival"] = [survivalMin, survivalMax];
-
-  // console.log(ageMin);
-  // console.log(ageMax);
-  // console.log(survivalMin);
-  // console.log(survivalMax);
-
-  // Object.keys(axes).forEach((el) => {
-  //   axesKnnCount[el] = 0;
-  // });
-  //
-  // for(var i=1; i<data.length; i++) {
-  //   for(var j=0; j<i; j++) {
-  //     Object.keys(axes).forEach((el) => {
-  //       if (data[i][el] != data[j][el]) {
-  //         axesKnnCount[el]++;
-  //       }
-  //     });
-  //   }
-  // }
-  // console.log(axesKnnCount);
-
-  // Object.keys(axes).forEach((el) => {
-  //   if(axesKnnCount[el]){
-  //     axesKnnFiltered.push(el);
-  //   }
-  // });
- /************************************************************/
   Object.keys(axes).forEach((el) => {
     if(axes[el]) {
       axesKnnFiltered.push(el);
     }
   });
 
-  // let axisLabels = {};
 
 	Object.keys(axes).forEach(el => {
 		axisLabels[el] = null;
 	})
   axisLabels["Probability of Survival"] = "5-year Survival Pbty";
+
 
   var titlefontSize = 0.045 * Math.min(d3.select(id).node().clientWidth, d3.select(id).node().clientHeight);
   var tickfontSize = titlefontSize * 0.9;
@@ -82,7 +46,6 @@ function knnNomogramPlots(where,id,data,categ){
     .setAxes(axesKnnFiltered.map(el => {
 	      return { name: el,
                  label: axisLabels[el],
-	              //  domain: axesKnnDomain[el],
                  domain: axesDomain[el],
                  rangeShrink: axesRange[el] };
 	    }),"reduce")
@@ -113,7 +76,6 @@ function knnNomogramPlots(where,id,data,categ){
 	});
 
   axesKnnFiltered = [];
-
 }
 
 
