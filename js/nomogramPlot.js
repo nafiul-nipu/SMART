@@ -170,7 +170,7 @@ function nomogramPlots(where,id,data,allData,categ){
 				// 	drawSlider("#domainSlider", dataDomain[el], "ordinal");
 				// }
 				// for changing rangeShrink
-				drawSlider("#rangeSlider", [0, 1], "linear");
+				drawSlider("#rangeSlider", [0, 1], "linear", dataRange[el]);
 			}
 		});
 
