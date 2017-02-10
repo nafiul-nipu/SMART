@@ -263,9 +263,9 @@ function mosaicPlot(where,data,callback,startFilters) {
 			}
 		}
 
-		console.log(this.filtersApplied);
-		console.log([this.categories[0],this.categories[1]]);
-		console.log(this.filteredData);
+		// console.log(this.filtersApplied);
+		// console.log([this.categories[0],this.categories[1]]);
+		// console.log(this.filteredData);
 		this.onFilterFunc(this.filtersApplied,[this.categories[0],this.categories[1]],this.filteredData);
 	}  // end - showPlot
 

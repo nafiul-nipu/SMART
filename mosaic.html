@@ -44,7 +44,7 @@
 		<!-- <div id = "title4-checkbox"> -->
 			<form style="display:inline">
 				<input type="checkbox" style="display:inline" checked onchange="changeParallelDisplayed(this.checked)" > Show K-Nearest Neighbors</input>
-				<input type="checkbox" style="display:inline" id="knnFilters" unchecked onchange="applyKnnFilters(this.checked)" > Remove Filters from KNN Search</input>
+				<!-- <input type="checkbox" style="display:inline" id="knnFilters" unchecked onchange="applyKnnFilters(this.checked)" > Remove Filters from KNN Search</input> -->
 			</form>
 		</div>
 		<div class="titleView"></div>
@@ -110,6 +110,11 @@
 			<div class="selectButtonWrapper">
 				<input type="button" id="updateAxes" value="Update">
 				<input type="button" id="resetAxes" value="Reset">
+			</div>
+
+			<div class="radioCheckbox" style="margin-top:10px">
+				<label> <input type="radio" id="knnFilters" name="knnChoice" onchange="applyKnnFilters(this.checked)" > Filtered KNN Search </input></label><br>
+				<label> <input type="radio" id="therapyKnnFilters" name="knnChoice" checked onchange="therapyKnnFilters(this.checked)" > Therapy Search </input></label>
 			</div>
 
 		</div>

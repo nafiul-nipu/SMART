@@ -73,27 +73,11 @@ function drawSlider(id, domain, type, startSizeSetter) {
           if (id === "#domainSlider") {
             axesDomain[el] = dataDomain[el];
           } else if (id === "#rangeSlider") {
-            // axesRange[el] = [0, 1];
-            // axesRange[el] = startSizeSetter;
-            // console.log(dataRange[el]);
             axesRange[el] = dataRange[el];
             selectedRange = dataRange[el];
           }
         }
       });
-
-      // if (startSizeSetter) {
-      //
-      //   var startingSize = startSizeSetter.map((d, i) => d * y.range()[i]);
-      //
-      //   let sliderHeight = y.range()[0] - y.range()[1];
-      //
-      //   domainBrush
-      //     .call(brushFunc.move, [
-      //       y.range()[0] - (startSizeSetter[1] * sliderHeight),
-      //       y.range()[0] - (startSizeSetter[0] * sliderHeight)
-      //      ]);
-      // }
 
       let sliderHeight = y.range()[0] - y.range()[1];
 

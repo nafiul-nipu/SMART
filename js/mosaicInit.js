@@ -169,6 +169,9 @@ function init(){
 
 					if (d3.select("#knnFilters").property('checked')) {
 						var star = new knnPlot(".rightDiv",csv,knnFilters);
+					} else if (d3.select("#therapyKnnFilters").property("checked")) {
+						therapyKnnFilters(true);
+						// var star = new knnPlot(".rightDiv",csv,[]);
 					} else {
 						var star = new knnPlot(".rightDiv",csv,[]);
 					}
@@ -182,6 +185,8 @@ function init(){
 				// for changing rangeShrink
 				drawSlider("#rangeSlider", [0, 1], "linear", [0, 1]);
 				// sliderLinking();
+
+				// therapyKnnFilters(d3.select("#therapyKnnFilters").property("checked"));
 
 		});
 	}); // Load data done
@@ -219,4 +224,22 @@ function applyKnnFilters(removeKnnFilter) {
 	}
 	knnFilters = [];
 	console.log(removeKnnFilter);
+}
+
+
+function therapyKnnFilters(val) {
+
+  let therapyFilters = [];
+
+	Object.keys(axes).forEach((el) => {
+		if (el == "Chemotherapy" || el== "Local_Therapy") {
+			therapyFilters.push({"cat": el, "val": copyAllData[selectedID][el]});
+		}
+	});
+
+	if (val) {
+		var star = new knnPlot(".rightDiv", copyAllData, therapyFilters);
+	} else {
+		var star = new knnPlot(".rightDiv", copyAllData, []);
+	}
 }

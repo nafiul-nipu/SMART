@@ -67,15 +67,34 @@ function nomogramPlots(where,id,data,allData,categ){
   var tickfontSize = titlefontSize * 0.9;
   var strokewidth = 0.01 * Math.min(d3.select(id).node().clientWidth, d3.select(id).node().clientHeight);
 
+	/*************************/
+	// let nomogramAxes = axesFiltered.map(el => {
+	// 		return { name: el,
+	// 						 label: axisLabels[el],
+	// 						 domain: axesDomain[el].map(d => d),
+	// 						 rangeShrink: axesRange[el] };
+	// 	});
+	//
+	// let axesOrder = ["AgeAtTx", "Gender", "Ethnicity", "Site", "Tcategory", "Nodal_Disease",
+	// 	"ecog", "Chemotherapy", "Local_Therapy", "Probability of Survival"];
+	//
+	// let sortedNomogramAxes = [];
+	//
+	// for (let axis of axesOrder) {
+	// 	let index = nomogramAxes.findIndex(function (el) { return axis === el.name; });
+	// 	sortedNomogramAxes.push(nomogramAxes[index]);
+	// }
+	/*************************/
+
 	this.nomogram = myNomogram = new Nomogram()
     .data(data)
     .target(id)
     .setAxes(axesFiltered.map(el => {
-	      return { name: el,
+				return { name: el,
 								 label: axisLabels[el],
-	               domain: axesDomain[el].map(d => d),
-	               rangeShrink: axesRange[el] };
-	    }),"reduce")
+								 domain: axesDomain[el].map(d => d),
+								 rangeShrink: axesRange[el] };
+			}),"reduce")
 		.margins({
 			top: 20,
 			left: 40,
@@ -132,8 +151,6 @@ function nomogramPlots(where,id,data,allData,categ){
 		// d3.select("#domainSlider").selectAll("*").remove();
 		d3.select("#rangeSlider").selectAll("*").remove();
 
-		d3.select("#knnFilters").property("checked", false);
-
 		Object.keys(axes).forEach((el) => {
 			axes[el] = true;
 
@@ -178,13 +195,19 @@ function nomogramPlots(where,id,data,allData,categ){
 		axesRange = JSON.parse(JSON.stringify(dataRange));
 
 		updatePCP();
-		updateKnnNomogram();
+		// updateKnnNomogram();
 		changeParallelDisplayed(d3.select("#title4").selectAll('input').property('checked'));
 
-		if (d3.select("#knnFilters").property('checked')) {
-			var star = new knnPlot(".rightDiv",allData,knnFilters);
-		}
-		knnFilters = [];
+		// if (d3.select("#knnFilters").property('checked')) {
+		// 	var star = new knnPlot(".rightDiv",allData,knnFilters);
+		// }
+
+		// var star = new knnPlot(".rightDiv",allData,knnFilters);
+		// knnFilters = [];
+
+		d3.select("#knnFilters").property("checked", false);
+		d3.select("#therapyKnnFilters").property("checked", true);
+		therapyKnnFilters(d3.select("#therapyKnnFilters").property("checked"));
 
 		// d3.select("#linkSlider").style("visibility", "hidden");
 		// sliderLeft = [0, 1];

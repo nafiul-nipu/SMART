@@ -40,15 +40,16 @@ function knnNomogramPlots(where,id,data,categ){
   var tickfontSize = titlefontSize * 0.9;
   var strokewidth = 0.01 * Math.min(d3.select(id).node().clientWidth, d3.select(id).node().clientHeight);
 
+
   this.nomogram = knnNomogram = new Nomogram()
     .data(data)
     .target(id)
     .setAxes(axesKnnFiltered.map(el => {
-	      return { name: el,
-                 label: axisLabels[el],
-                 domain: axesDomain[el],
-                 rangeShrink: axesRange[el] };
-	    }),"reduce")
+  			return { name: el,
+  							 label: axisLabels[el],
+  							 domain: axesDomain[el].map(d => d),
+  							 rangeShrink: axesRange[el] };
+  		}),"reduce")
 		.margins({
 			top: 20,
 			left: 40,
@@ -90,11 +91,11 @@ function updateKnnNomogram() {
   });
 
   knnNomogram.setAxes(axesKnnFiltered.map(el => {
-      return { name: el,
-               label: axisLabels[el],
-               domain: axesDomain[el],
-               rangeShrink: axesRange[el] };
-    }),"reduce")
+			return { name: el,
+							 label: axisLabels[el],
+							 domain: axesDomain[el].map(d => d),
+							 rangeShrink: axesRange[el] };
+		}),"reduce")
     .draw();
 
   axesKnnFiltered = [];
