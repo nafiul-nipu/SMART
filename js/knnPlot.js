@@ -72,17 +72,18 @@ function knnPlot(where,data,filters,number){
 												        return this.selected;
 												    }).attr("value"));
 							var knn = new knnPlot(where,data,filters ,selectedIndex);
-						});;
-	// headerList.append("b").text(":");
+						});
+
 	headerList.append("b");
 
-	for (var i in data){
-		if (this.isInsideFiltered(i)){
+  for (var i=0; i<data.length; i++) {
+	// for (var i in data){
+		// if (this.isInsideFiltered(i)){
 			var op = select.append("option").attr("value",i).text(i);
 			if (number == i){
 				op.attr("selected","selected");
 			}
-		}
+		// }
 	}
 
 	for (var i=0; i<data.length; i++) {
