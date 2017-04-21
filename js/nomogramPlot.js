@@ -243,6 +243,11 @@ function updatePCP() {
 // func
 function checkbox(id, val) {
 	axes[id] = val;
+
+
+	// auto-update :) NEVER DO THIS!
+	let me = new MouseEvent("click");
+	document.getElementById('updateAxes').dispatchEvent(me);
 }
 
 

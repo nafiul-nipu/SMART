@@ -262,7 +262,9 @@ knnPlot.prototype.similarity = function(p1,p2){
 knnPlot.prototype.findKNearest = function(patient, k){
 	// console.log(this.data.length);
 	var pat = {"pat":this.data[patient]};
-	var sortedNeigh =[];
+	var sortedNeigh = [];
+
+	let patientsByDistance = new Array(100).fill(0);
 
 	// console.log(this.filters);
 
@@ -287,9 +289,12 @@ knnPlot.prototype.findKNearest = function(patient, k){
 			} else if (sortedNeigh[0].sim < curr.sim){
 				sortedNeigh = insertSorted(curr,sortedNeigh,true);
 			}
+			patientsByDistance[Math.round(curr.sim * 10)]++;
 		}
 	}
   // console.log(sortedNeigh);
+
+	console.log(patientsByDistance);
 
 	return sortedNeigh;
 }
