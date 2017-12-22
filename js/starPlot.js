@@ -24,7 +24,8 @@ function starPlot(where,data, number){
 	// var surviveScale = d3.scale.linear().domain([0,1]).range(["#d18161","#70a4c2"]);
 	var surviveScale = d3.scaleLinear().domain([0,1]).range(["#d18161","#70a4c2"]);
 
-	this.categories = ["Ethnicity","Site","Tcategory","Gender","Nodal_Disease","ecog","Chemotherapy","Local_Therapy"];
+	this.categories = ["Ethnicity", "Site", "Tcategory", "Gender", "Nodal_Disease", "ecog", "Chemotherapy", "Local_Therapy"];
+	this.abbreviations = ["Eth","Site","Tcat","Gend","Nod_D","ecog","Chem","L_Ther"];
 	var categories = this.categories;
 
 	this.tip = d3.tip()
@@ -77,9 +78,10 @@ function starPlot(where,data, number){
 			  .attr("x",Math.cos( i * angleStep) * w/3)
 			  .attr("y",Math.sin( i * angleStep) * h/3)
 			  .datum({"cat": this.categories[i] , "val": data[number][this.categories[i]]})
-			  .style("font-size","110%")
+			  // .style("font-size","110%")
 				.style("pointer-events", "none")
-			  .text(i);
+				.style("text-anchor", "middle")
+			  .text(this.abbreviations[i]);
 			  // .on("mouseover",this.tip.show)
 			  // .on("mouseout",this.tip.hide);
 

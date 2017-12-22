@@ -180,16 +180,29 @@ function knnPlot(where,data,filters,number){
 	var padding  = 4
 	var textH = (lH - (this.allCategories.length+1) * padding ) / (this.allCategories.length+1);
 
+	let abbreviations = ["Eth", "Site", "Tcat", "Gend", "Nod_D", "ecog", "Chem", "L_Ther"];
+
 	for (i in this.allCategories){
 		this.legend.append("text").datum(this.allCategories[i])
 								.attr("x",6)
 								.attr("y",function(d){
 									return (textH + padding) * (parseInt(i)+1);
 								})
-								.text(function(d){
-									return i+": "+d;
+								.html(function(d){
+									return `${abbreviations[i]}`;
 								})
-								.style("font-size","75%");
+								.style("font-size","70%")
+								.style("font-weight", "bold");
+
+		this.legend.append("text").datum(this.allCategories[i])
+								.attr("x",48)
+								.attr("y",function(d){
+									return (textH + padding) * (parseInt(i)+1);
+								})
+								.html(function(d){
+									return ` - ${d}`;
+								})
+								.style("font-size","70%");
 	}
 
 	//****************** Parallel Chart ******************//
