@@ -25,7 +25,7 @@ function starPlot(where,data, number){
 	var surviveScale = d3.scaleLinear().domain([0,1]).range(["#d18161","#70a4c2"]);
 
 	this.categories = ["Ethnicity", "Site", "Tcategory", "Gender", "Nodal_Disease", "ecog", "Chemotherapy", "Local_Therapy"];
-	this.abbreviations = ["Eth","Site","Tcat","Gend","Nod_D","ecog","Chem","L_Ther"];
+	abbreviations = ["Eth","Site","Tcat","Gend","Nod","ecog","Chem","L_Ther"];
 	var categories = this.categories;
 
 	this.tip = d3.tip()
@@ -65,6 +65,8 @@ function starPlot(where,data, number){
 			  .attr("x1",0)
 				.attr("y1",0)
 				.attr("stroke-dasharray", 1 +","+ 1)
+				// .style("stroke-opacity", 0.5)
+				// .attr("stroke-linecap", "round")
 				.attr("x2",Math.cos( i * angleStep) * w/2)
 				.attr("y2",Math.sin( i * angleStep) * h/2)
 				.attr("class","starPlotAxis")
@@ -74,20 +76,21 @@ function starPlot(where,data, number){
 				// .on("mouseover",this.tip.show);
 				// .on("mouseout",this.tip.hide);
 
+			let labelDistanceFactor = 1.2/3;
+
 			svg.append("text")
-			  .attr("x",Math.cos( i * angleStep) * w/3)
-			  .attr("y",Math.sin( i * angleStep) * h/3)
+				.attr("class", "kiviatLabel")
+			  .attr("x",Math.cos( i * angleStep) * labelDistanceFactor * w)
+			  .attr("y",Math.sin( i * angleStep) * labelDistanceFactor * h)
 			  .datum({"cat": this.categories[i] , "val": data[number][this.categories[i]]})
 			  // .style("font-size","110%")
-				.style("pointer-events", "none")
-				.style("text-anchor", "middle")
-			  .text(this.abbreviations[i]);
+			  .text(abbreviations[i]);
 			  // .on("mouseover",this.tip.show)
 			  // .on("mouseout",this.tip.hide);
 
 			svg.append("circle")
-				.attr("cx",Math.cos( i * angleStep) * w/3 + 8)
-				.attr("cy",Math.sin( i * angleStep) * h/3 - 8)
+				.attr("cx",Math.cos( i * angleStep) * labelDistanceFactor * w + 8)
+				.attr("cy",Math.sin( i * angleStep) * labelDistanceFactor * h - 8)
 				.attr("r", 20)
 				.style("fill-opacity", 0)
 				.datum({"cat": this.categories[i] , "val": data[number][this.categories[i]]})

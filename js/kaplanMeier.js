@@ -194,10 +194,11 @@ kaplanMeierPlot.prototype.drawPlot = function(){
 
   // d3 verson 4
 	var x = d3.scaleLinear().domain([0, this.maxSurvival]).range([0, this.w]);
+	var xYears = d3.scaleLinear().domain([0, this.maxSurvival/12]).range([0, this.w]);
 	var y = d3.scaleLinear().domain([1, 0]).range([0, this.h]);
 
 	var xAxis = d3.axisBottom()
-    .scale(x)
+    .scale(xYears)
     .tickSize(2)
     .tickPadding(6);
 
@@ -281,7 +282,7 @@ kaplanMeierPlot.prototype.drawPlot = function(){
     .style("text-anchor", "middle")
     .style("font-weight","bold")
 		.style("font-size", "24")
-    .text("Overall Survival Rate in months");
+    .text("Overall Survival Rate in Years");
 
   this.svg.append("text")
     .attr("transform", "translate("+ (-this.axisW -25) + ", "+ (this.h/2)+") rotate(-90)")

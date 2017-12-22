@@ -734,3 +734,12 @@ select, option {
     stroke: black;
     fill: orange;
 }
+
+.kiviatLabel {
+	pointer-events: none;
+	text-anchor: middle;
+	fill: black;
+	stroke: white;
+	stroke-opacity: 0.6;
+	stroke-width: 3px;
+}

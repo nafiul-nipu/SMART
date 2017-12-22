@@ -180,7 +180,7 @@ function knnPlot(where,data,filters,number){
 	var padding  = 4
 	var textH = (lH - (this.allCategories.length+1) * padding ) / (this.allCategories.length+1);
 
-	let abbreviations = ["Eth", "Site", "Tcat", "Gend", "Nod_D", "ecog", "Chem", "L_Ther"];
+	let abbreviations = ["Eth", "Site", "Tcat", "Gend", "Nod", "ecog", "Chem", "L_Ther"];
 
 	for (i in this.allCategories){
 		this.legend.append("text").datum(this.allCategories[i])
