@@ -16,7 +16,7 @@ function mosaicPlot(where,data,callback,startFilters) {
 	var axisW = 100;
 	var axisH = 30;
 
-	var sliderH = 50;
+	var sliderH = 75;
 	var sliderTextW = 50;
 
 	var w = 500;
@@ -30,6 +30,8 @@ function mosaicPlot(where,data,callback,startFilters) {
 		.attr("viewBox",-axisW + " " + -axisH + " " + (w + axisW) + " " + (h + axisH + sliderH));
 
 	this.svg = svg;
+
+	this.scentGroup = svg.append("g");
 
 	this.tip = d3.tip()
 		.attr('class', 'd3-tip')
@@ -132,6 +134,7 @@ function mosaicPlot(where,data,callback,startFilters) {
 	this.showPlot = function() {
 		this.svg.selectAll(".axisText").remove();
 		this.svg.selectAll(".mosaicTile").remove();
+		this.scentGroup.selectAll(".scentBar").remove();
 
 		var categories = this.categories;
 		var possibleValues = this.possibleValues;
@@ -267,6 +270,54 @@ function mosaicPlot(where,data,callback,startFilters) {
 		// console.log([this.categories[0],this.categories[1]]);
 		// console.log(this.filteredData);
 		this.onFilterFunc(this.filtersApplied,[this.categories[0],this.categories[1]],this.filteredData);
+
+		// add scented widgets
+	var categories = this.categories;
+  var possibleValues = this.possibleValues;
+
+  var xCat = categories[0];
+	var yCat = categories[1];
+
+	let groups = [];
+
+	// break filtered data into all groups
+	possibleValues[xCat].forEach(x => {
+		possibleValues[yCat].forEach(y => {
+			let group = this.filteredData.filter(patient => patient[xCat] === x && patient[yCat] === y);
+
+			groups.push({
+				x,
+				y,
+				patients: group,
+				avg: d3.mean(group, patient => patient["Probability of Survival"])
+			});
+		})
+	});
+
+	console.log(groups);
+
+	let groupSizeExtent = d3.extent(groups, group => group.patients.length);
+	console.log(groupSizeExtent);
+
+	let scentBarHeightScale = d3.scaleLinear()
+		.domain([0, groupSizeExtent[1]])
+		.range([3, 35]);
+
+	let scentBarXScale = d3.scaleLinear()
+		.domain([0, 1])
+		.range([padding * 8, w - padding - sliderTextW]);
+
+		console.log([padding * 8, w - padding - sliderTextW]);
+
+		svg.selectAll(".scentBar")
+			.data(groups)
+		.enter().append("rect")
+			.attr("class", "scentBar")
+			.attr("width", 6)
+			.attr("height", d => scentBarHeightScale(d.patients.length))
+			.attr("x", d => scentBarXScale(d.avg) - 3)
+			.attr("y", d => h + sliderH - padding * 7 - scentBarHeightScale(d.patients.length))
+			.style("fill", "red");
 	}  // end - showPlot
 
 
@@ -534,13 +585,17 @@ function mosaicPlot(where,data,callback,startFilters) {
       that.changeThreshold(sliderPerc(parseInt(d3.select(this).attr("cx"))));
     });
 
-	var sliderHandle = svg.append("circle")
-	  .attr("class","MosaicSliderHandle")
-		// .attr("cx",padding*3 + sliderBar.attr("width")/2)
-		// .attr("cy",h + sliderH - 2*padding)
-		.attr("cx",padding * 8 + sliderBar.attr("width")/2)
-		.attr("cy",h + sliderH - padding * 6)
-		.attr("r",padding * 1.5)
-	  .call(drag);
+		
+	// add handle above scented bars
+	var sliderHandle = svg
+    .append("circle")
+		.attr("class", "MosaicSliderHandle")
+		.attr("z-index", 1)
+    // .attr("cx",padding*3 + sliderBar.attr("width")/2)
+    // .attr("cy",h + sliderH - 2*padding)
+    .attr("cx", padding * 8 + sliderBar.attr("width") / 2)
+    .attr("cy", h + sliderH - padding * 6)
+    .attr("r", padding * 1.5)
+    .call(drag);
 
 }
