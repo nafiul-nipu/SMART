@@ -309,7 +309,7 @@ function mosaicPlot(where,data,callback,startFilters) {
 
 		console.log([padding * 8, w - padding - sliderTextW]);
 
-		svg.selectAll(".scentBar")
+		this.scentGroup.selectAll(".scentBar")
 			.data(groups)
 		.enter().append("rect")
 			.attr("class", "scentBar")
