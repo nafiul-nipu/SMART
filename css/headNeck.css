@@ -618,7 +618,7 @@ circle {
 }
 
 .mosaicBackButtonDiv.showing {
-	border: 3px solid lightblue
+	border: 2px solid rgba(36, 242, 242, 0.5);
 }
 
 .kaplanLine {
@@ -791,7 +791,7 @@ select, option {
 }
 
 .nomogram-control-toggle.open {
-	border: 3px solid lightblue
+	border: 2px solid rgba(36, 242, 242, 0.5);
 }
 
 .settings-button {
@@ -799,7 +799,7 @@ select, option {
 	height: 3%;
 	width: 2%;
 	background: #eee;
-	border: 0.2vmin solid gray;
+	border: 0.2vmin solid rgba(128, 128, 128, 0.25);
 	border-radius: 0.3vmin;
 	outline: none;
 }
