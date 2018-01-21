@@ -118,7 +118,7 @@ function knnPlot(where,data,filters,number){
 							.append("svg")
 							.attr("class","fullDiv")
 							.attr("viewBox","0 0 "+lW + " "+lH)
-							.attr("preserveAspectRatio", "xMinYMin")
+							.attr("preserveAspectRatio", "xMinYMax")
 
 	this.legend.append("linearGradient")
       .attr("id", "temperature-gradient")
@@ -175,10 +175,10 @@ function knnPlot(where,data,filters,number){
 							.append("svg")
 							.attr("class","fullDiv")
 							.attr("viewBox","0 0 "+lW + " "+lH)
-							.attr("preserveAspectRatio", "xMinYMin")
+							.attr("preserveAspectRatio", "xMinYMax")
 
 	var padding  = 4
-	var textH = (lH - (this.allCategories.length+1) * padding ) / (this.allCategories.length+1);
+	var textH = (lH - (this.allCategories.length) * padding ) / (this.allCategories.length+1);
 
 	let abbreviations = ["Eth", "Site", "Tcat", "Gend", "Nod", "ecog", "Chem", "L_Ther"];
 
@@ -186,7 +186,7 @@ function knnPlot(where,data,filters,number){
 		this.legend.append("text").datum(this.allCategories[i])
 								.attr("x",6)
 								.attr("y",function(d){
-									return (textH + padding) * (parseInt(i)+1);
+									return (textH + padding) * (parseInt(i)+1) + padding;
 								})
 								.html(function(d){
 									return `${abbreviations[i]}`;
@@ -197,7 +197,7 @@ function knnPlot(where,data,filters,number){
 		this.legend.append("text").datum(this.allCategories[i])
 								.attr("x",48)
 								.attr("y",function(d){
-									return (textH + padding) * (parseInt(i)+1);
+									return (textH + padding) * (parseInt(i)+1) + padding;
 								})
 								.html(function(d){
 									return ` - ${d}`;

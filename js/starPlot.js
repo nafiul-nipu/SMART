@@ -14,7 +14,7 @@ function starPlot(where,data, number){
 
 	var svg = container.append("svg")
 	  .attr("class","fullDiv")
-		.attr("preserveAspectRatio","xMinYMin")
+		.attr("preserveAspectRatio","xMinYMax")
 		.attr("viewBox",(-w/2)+" "+ (-h/2) +" " + (w)+ " " + (h));
 
 	var key0 = Object.keys(data)[0];

@@ -71,12 +71,16 @@ function mosaicPlot(where,data,callback,startFilters) {
 
 	this.showingPlot = true;
 
-	this.backButton = allContainer.append("div")
-	  .attr("class","mosaicBackButtonDiv")
+	this.backButton = allContainer.append("button")
+	  .attr("class","mosaicBackButtonDiv settings-button")
+	  .style("width", 8 + "%")
+	  .style("height", 10 + "%")
 		.on("click",function(){
 			that.showingPlot = !that.showingPlot;
 			that.listDiv.style("width", that.showingPlot? "0%" : "100%");
 			container.style("width", that.showingPlot? "100%" : "0%");
+			
+			that.backButton.classed("showing", !that.showingPlot);
 		})
 		.on("mouseover", function(d) {
 			var evt = d3.event;
@@ -96,21 +100,21 @@ function mosaicPlot(where,data,callback,startFilters) {
 				.style("display", "none");
 		});
 
-	// this.backButton.append("i").attr("class","fa fa-2x fa-bars");
-  var backButtonSvg = this.backButton.append("svg")
-	  .attr("x", 0)
-	  .attr("width", "5vmin")
-		.attr("height", "5vmin");
+	this.backButton.append("i").attr("class","fa fa-wrench");
+//   var backButtonSvg = this.backButton.append("svg")
+// 	  .attr("x", 0)
+// 	  .attr("width", "5vmin")
+// 		.attr("height", "5vmin");
 
-	for (var i=0; i<3; i++) {
-		backButtonSvg.append("rect")
-			.attr("x", "0.4vw")
-			.attr("y", (0.6+i)+"vh")
-			.attr("width", "1.8vw")
-			.attr("height", "0.6vh")
-			.style("border-radius", 5)
-			.style("fill", "gray");
-	}
+// 	for (var i=0; i<3; i++) {
+// 		backButtonSvg.append("rect")
+// 			.attr("x", "0.4vw")
+// 			.attr("y", (0.6+i)+"vh")
+// 			.attr("width", "1.8vw")
+// 			.attr("height", "0.6vh")
+// 			.style("border-radius", 5)
+// 			.style("fill", "gray");
+// 	}
 
 	this.possibleValues = {};
 	var possibleValues = this.possibleValues;

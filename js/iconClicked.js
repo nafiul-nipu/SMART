@@ -115,6 +115,10 @@ function resetInfoButtons() {
 	d3.select("#helpIconText-Mosaic").text("?");
 
 	d3.select(".iconOverlay").style("display", "none");
+
+	d3.select(".nomogram-controls").classed("open",
+		d3.select(".nomogram-control-toggle").classed("open")
+	);
 }
 
 
@@ -158,6 +162,8 @@ function openHelpNomogram() {
 	// d3.select(".iconOverlay").style("display", "block");
 
 	drawArrowNomogram("#helpArrow-Nomogram");
+
+	d3.select(".nomogram-controls").classed("open", true);
 }
 
 function openHelpSurvival() {

@@ -49,6 +49,8 @@ var copyAllData;  // 12.9.16 pass csv to it for func applyKnnFilters
 //Called onload
 function init(){
 
+	setupNomogramControlVisibility();
+
 	d3.select(".mosaicBackButtonDiv")
 		.on("mouseover", function(d) {
 			var evt = d3.event;

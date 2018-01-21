@@ -193,8 +193,8 @@ body{
 
 .buttonWrapper {
 	position: absolute;
-	left:27%;
-	top: 12%;
+	/* left:27%; */
+	top: 10%;
 }
 
 .radioCheckbox input {
@@ -220,11 +220,15 @@ label {
 .sliders {
 	position: absolute;
 
-	top: 12%;
-	left: 39%;
+	/* top: 21%; */
+	top: 11%;
+	left: 87%;
 
-	width: 3%;
-	height: 28%;
+	/* width: 3%; */
+	/* height: 28%; */
+
+	width: 25%;
+	height: 82%;
 
 	/*background-color: lightblue;*/
   /*white-space: nowrap;*/
@@ -613,6 +617,10 @@ circle {
     background-color: #bbbbbb;
 }
 
+.mosaicBackButtonDiv.showing {
+	border: 3px solid lightblue
+}
+
 .kaplanLine {
 	opacity: 0.7;
 }
@@ -742,4 +750,62 @@ select, option {
 	stroke: white;
 	stroke-opacity: 0.6;
 	stroke-width: 3px;
+}
+
+.nomogram-controls {
+	/* border: solid 2px rgba(0, 0, 0, 0.5); */
+	border-radius: 5px;
+	opacity: 0;
+	transition: opacity 0.5s;
+	position: absolute;
+	top: 8%;
+	left: 26.5%;
+	width: 14%;
+	height: 33%;
+	padding: 5px;
+}
+
+.nomogram-controls.open {
+	opacity: 1;
+}
+
+.nomogram-controls>.title {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	left: -2px;
+	/* transform: translateY(-120%); */
+	top: 0;
+	font-size: 2vmin;
+	border-radius: 5px 5px 0 0;
+	/* border-top: 2px solid rgba(0, 0, 0, 0.5);
+	border-left: 2px solid rgba(0, 0, 0, 0.5);
+	border-right: 2px solid rgba(0, 0, 0, 0.5); */
+}
+
+.nomogram-control-toggle {
+	/* my positioning */
+	position: absolute;
+	left: 42%;
+	top: 8%;
+}
+
+.nomogram-control-toggle.open {
+	border: 3px solid lightblue
+}
+
+.settings-button {
+	padding: 0;
+	height: 3%;
+	width: 2%;
+	background: #eee;
+	border: 0.2vmin solid gray;
+	border-radius: 0.3vmin;
+	outline: none;
+}
+
+.settings-button>.fa-wrench {
+	/* my positioning */
+	margin-top: 1vmin;
+	font-size: 1.5vmin;
 }
