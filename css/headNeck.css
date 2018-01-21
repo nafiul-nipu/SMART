@@ -787,7 +787,7 @@ select, option {
 	/* my positioning */
 	position: absolute;
 	left: 42%;
-	top: 8%;
+	top: 7%;
 }
 
 .nomogram-control-toggle.open {

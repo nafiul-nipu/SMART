@@ -186,7 +186,7 @@ function knnPlot(where,data,filters,number){
 		this.legend.append("text").datum(this.allCategories[i])
 								.attr("x",6)
 								.attr("y",function(d){
-									return (textH + padding) * (parseInt(i)+1) + padding;
+									return (textH + padding) * (parseInt(i)+1) + 15;
 								})
 								.html(function(d){
 									return `${abbreviations[i]}`;
@@ -197,7 +197,7 @@ function knnPlot(where,data,filters,number){
 		this.legend.append("text").datum(this.allCategories[i])
 								.attr("x",48)
 								.attr("y",function(d){
-									return (textH + padding) * (parseInt(i)+1) + padding;
+									return (textH + padding) * (parseInt(i)+1) + 15;
 								})
 								.html(function(d){
 									return ` - ${d}`;
