@@ -1,150 +1,173 @@
-body{
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	overflow: hidden;
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow: hidden;
 }
 
-.vizContent{
-	position: absolute;
-	left: 0;
-	top: 5%;
-	width: 100%;
-	height: 95%;
+.vizContent {
+    position: absolute;
+    left: 0;
+    top: 5%;
+    width: 100%;
+    height: 95%;
 }
 
-.vizTitle{
-	position: absolute;
-	left: 0;
-	top: 0%;
-	width: 100%;
-	height: 5%;
-	text-align: center;
-	/*font-size: 32px;*/
-	font-size: 3vmin;
-	font-weight: bold;
-	margin-top: 25px;
-	line-height: 0;
+.vizTitle {
+    position: absolute;
+    left: 0;
+    top: 0%;
+    width: 100%;
+    height: 5%;
+    text-align: center;
+    /*font-size: 32px;*/
+    font-size: 3vmin;
+    font-weight: bold;
+    margin-top: 25px;
+    line-height: 0;
 }
 
 .container {
-    width:1300px;
+    width: 1300px;
 }
-
 
 .titleView {
     position: absolute;
     width: 24%;
-		height: 6%;
-		left: 75%;
-		top: 54%;
-		padding: 0;
-
-		box-sizing: border-box;
-
-		overflow-x: hidden;
-		overflow-y: scroll;
+    height: 6%;
+    left: 75%;
+    top: 54%;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
-#title1{ /* star */
+
+#title1 {
+    /* star */
     position: absolute;
     top: 3%;
-		left: -4%;
+    left: -4%;
     width: 30%;
     height: 5%;
-		font-size: 2vmin;
+    font-size: 2vmin;
     text-align: center;
     line-height: 0;
 }
-#title2{ /* survival */
+
+#title2 {
+    /* survival */
     position: absolute;
-		left: 38%;
+    left: 38%;
     top: 50%;
     width: 30%;
     height: 5%;
-		font-size: 2vmin;
+    font-size: 2vmin;
     text-align: center;
     line-height: 0;
 }
-#title3{ /* mosaic */
+
+#title3 {
+    /* mosaic */
     position: absolute;
-		left: 75%;
+    left: 75%;
     top: 50%;
     width: 22%;
     height: 5%;
-		font-size: 2vmin;
+    font-size: 2vmin;
     text-align: center;
     line-height: 0;
 }
-#title4{ /* nomogram */
+
+#title4 {
+    /* nomogram */
     position: absolute;
     top: 3%;
-		left: 25%;
+    left: 25%;
     width: 75%;
     height: 5%;
-		font-size: 2vmin;
+    font-size: 2vmin;
     text-align: center;
-		line-height: 0;
+    line-height: 0;
 }
-#title4-checkbox{
-	position: absolute;
-	top: 6%;
-	left: 20%;
-	width: 80%;
-	height: 5%;
-	text-align: center;
+
+#title4-checkbox {
+    position: absolute;
+    top: 6%;
+    left: 20%;
+    width: 80%;
+    height: 5%;
+    text-align: center;
 }
 
 #title4 input {
-	width: 1.5vmin;
-	height: 1.5vmin;
+    width: 1.5vmin;
+    height: 1.5vmin;
 }
+
+
 /*********/
 
+
 /* star */
-.rightDiv, #chart3{
+
+.rightDiv,
+#chart3 {
     position: absolute;
     /*left: 70%;*/
-		left: -2%;
+    left: -2%;
     top: 10%;
     width: 30%;
     height: 84%;
     text-align: center;
-		/*background-color: pink;*/
+    /*background-color: pink;*/
 }
 
+
 /* survival */
-.centerDiv, #chart2 {
+
+.centerDiv,
+#chart2 {
     position: absolute;
-		left: 38%;
+    left: 38%;
     top: 55%;
     width: 30%;
     height: 40%;
-		/*background-color: orange;*/
+    /*background-color: orange;*/
 }
 
+
 /* mosaic */
-.leftDiv, #chart1 {
+
+.leftDiv,
+#chart1 {
     position: absolute;
-		left: 74%;
+    left: 74%;
     top: 62%;
     width: 26%;
     height: 32%;
-		/*background-color: orange;*/
+    /*background-color: orange;*/
 }
 
+
 /* nomogram */
+
 .bottomDiv {
     position: absolute;
-    top: 10%; /* 72%; */
-		left: 41%; /*16%;*/
+    top: 10%;
+    /* 72%; */
+    left: 41%;
+    /*16%;*/
     width: 59%;
     height: 35%;
-		/*background-color: orange;*/
+    /*background-color: orange;*/
 }
+
 #chart4 {
     position: absolute;
     font-family: sans-serif;
     font-size: 10px;
 }
-#parallelChartForKNN{
+
+#parallelChartForKNN {
     position: absolute;
     font-family: sans-serif;
     font-size: 10px;
@@ -155,174 +178,156 @@ body{
 #helpArrow-Nomogram,
 #helpArrow-Survival,
 #helpArrow-Mosaic {
-	position: absolute;
-	left: 0%;
-	top: 0%;
+    position: absolute;
+    left: 0%;
+    top: 0%;
 }
 
-.nomogramLegend{
-	position: absolute;
-  left:80%;
-  top: 12%;
-  height: 10%;
-  width: 10%;
-  /*background-color: pink;*/
+.nomogramLegend {
+    position: absolute;
+    left: 80%;
+    top: 12%;
+    height: 10%;
+    width: 10%;
+    /*background-color: pink;*/
 }
 
-.radiobuttonFilters{
-	display: inline-block;
-
-  /*position: absolute;*/
-  /*left:27%; /* 1% -> 21% **/
-  /*top: 12%;  /* 77% **/
-  /*height: 25%;*/
-  /*width: 2%;*/
-  /*background-color: orange;*/
+.radiobuttonFilters {
+    display: inline-block;
+    /*position: absolute;*/
+    /*left:27%; /* 1% -> 21% **/
+    /*top: 12%;  /* 77% **/
+    /*height: 25%;*/
+    /*width: 2%;*/
+    /*background-color: orange;*/
 }
 
-.checkboxFilters{
-	display: inline-block;
-
-  /*position: absolute;*/
-	/*left:29%;*/
-	/*top: 12%;*/
-	/*height: 25%;*/
-	/*width: 10%;*/
-  /*background-color: lightblue;*/
+.checkboxFilters {
+    display: inline-block;
+    /*position: absolute;*/
+    /*left:29%;*/
+    /*top: 12%;*/
+    /*height: 25%;*/
+    /*width: 10%;*/
+    /*background-color: lightblue;*/
 }
 
 .buttonWrapper {
-	position: absolute;
-	/* left:27%; */
-	top: 10%;
+    position: absolute;
+    /* left:27%; */
+    top: 10%;
 }
 
 .radioCheckbox input {
-	width: 1.5vmin;
-	height: 1.5vmin;
+    width: 1.5vmin;
+    height: 1.5vmin;
 }
 
 .selectButtonWrapper input {
-	width: 6vmin;
-	height: 2.2vmin;
-
-	font-size: 1.5vmin;
-	text-align: center;
-
-	padding: 0;
+    width: 6vmin;
+    height: 2.2vmin;
+    font-size: 1.5vmin;
+    text-align: center;
+    padding: 0;
 }
 
 label {
-  /*display: inline-block;*/
-	font-size: 1.4vmin;
+    /*display: inline-block;*/
+    font-size: 1.4vmin;
 }
 
 .sliders {
-	position: absolute;
-
-	/* top: 21%; */
-	top: 11%;
-	left: 87%;
-
-	/* width: 3%; */
-	/* height: 28%; */
-
-	width: 25%;
-	height: 82%;
-
-	/*background-color: lightblue;*/
-  /*white-space: nowrap;*/
+    position: absolute;
+    /* top: 21%; */
+    top: 11%;
+    left: 87%;
+    /* width: 3%; */
+    /* height: 28%; */
+    width: 25%;
+    height: 82%;
+    /*background-color: lightblue;*/
+    /*white-space: nowrap;*/
 }
 
 .w3-table {
-	position: relative;
-	width: 100%;
-	height: 100%;
-
-	padding: 0px;
-	margin: 0px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
 }
 
 td {
-	width: 33%;
+    width: 33%;
 }
 
-.domainSlider{
-  /*position: absolute;
+.domainSlider {
+    /*position: absolute;
   left: 38%;
   top: 12%;
   width: 1%;
   height: 30%;*/
-  /*background-color: orange;*/
-
-	display: inline-block;
-	float:left;
-	width: 33%;
-  /*white-space: normal;*/
+    /*background-color: orange;*/
+    display: inline-block;
+    float: left;
+    width: 33%;
+    /*white-space: normal;*/
 }
 
-.linkSlider{
-  /*position: absolute;
+.linkSlider {
+    /*position: absolute;
   left: 39%;
   top: 12%;
   width: 1%;
   height: 30%;*/
-  /*background-color: lightblue;*/
-
-	display: inline-block;
-	float:left;
-	width: 34%;
-  /*white-space: normal;*/
+    /*background-color: lightblue;*/
+    display: inline-block;
+    float: left;
+    width: 34%;
+    /*white-space: normal;*/
 }
 
-.rangeSlider{
-  /*position: absolute;
+.rangeSlider {
+    /*position: absolute;
   left: 40%;
   top: 12%;
   width: 1%;
   height: 30%;*/
-  /*background-color: lightgreen;*/
-
-	display: inline-block;
-	float:left;
-	width: 33%;
-  /*white-space: normal;*/
+    /*background-color: lightgreen;*/
+    display: inline-block;
+    float: left;
+    width: 33%;
+    /*white-space: normal;*/
 }
 
 .axis--grid .domain {
-  fill: #cccccc;
-  stroke: none;
+    fill: #cccccc;
+    stroke: none;
 }
 
 .axis--x .domain,
 .axis--y .domain,
 .axis--grid .tick line {
-  stroke: #cccccc;
+    stroke: #cccccc;
 }
 
-
 .fa {
-	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
-
-	color: gray;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: gray;
 }
 
 .randomTooltip {
-	position: absolute;
-	display: none;
-
-	padding: 0.5vmin;
-
-	font-size: 1.5vmin;
-	text-align: center;
-
-	pointer-events: none;
-
-	border-radius: 0.3vmin;
-	color: white;
-	background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    display: none;
+    padding: 0.5vmin;
+    font-size: 1.5vmin;
+    text-align: center;
+    pointer-events: none;
+    border-radius: 0.3vmin;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .label {
@@ -337,12 +342,13 @@ td {
     vertical-align: baseline;
     border-radius: .25em;
 }
-#tooltip{
+
+#tooltip {
     font-family: sans-serif;
     /*font-size: 14px;*/
-		font-size: 1.5vmin;
+    font-size: 1.5vmin;
     font-weight: bold;
-    color:black;
+    color: black;
 }
 
 .axis,
@@ -366,7 +372,7 @@ circle {
 .d3-tip:after {
     box-sizing: border-box;
     /*font-size: 10px;*/
-		font-size: 1.5vmin;
+    font-size: 1.5vmin;
     width: 100%;
     line-height: 1;
     color: rgba(0, 0, 0, 0.8);
@@ -378,13 +384,10 @@ circle {
 .d3-tip {
     line-height: 1;
     font-weight: bold;
-
-		padding: 0.5vmin;
-
-		font-size: 1.5vmin;
-
-		border-radius: 0.3vmin;
-		color: #fff;
+    padding: 0.5vmin;
+    font-size: 1.5vmin;
+    border-radius: 0.3vmin;
+    color: #fff;
     background: rgba(0, 0, 0, 0.8);
 }
 
@@ -395,222 +398,222 @@ circle {
 }
 
 .titleDiv {
-	width: 100%;
-	height: 10%;
-	text-align: center;
-	background: #BDECB6;
-	border-radius: 25px;
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    background: #BDECB6;
+    border-radius: 25px;
 }
 
-.titleText{
-	font-size: 5vmin;
-	line-height: 10vmin;
-	font-weight: bold;
+.titleText {
+    font-size: 5vmin;
+    line-height: 10vmin;
+    font-weight: bold;
 }
 
-.subTitleText{
-	font-size: 3vmin;
-	line-height: 6vmin;
-	font-weight: bold;
-	text-align: center;
-	margin-bottom: 0;
+.subTitleText {
+    font-size: 3vmin;
+    line-height: 6vmin;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0;
 }
 
-.fullDiv{
+.fullDiv {
     position: absolute;
     left: 0;
     top: 0;
-	height: 100%;
-	width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 .mainDiv {
-	width: 100%;
-	height: 90%;
+    width: 100%;
+    height: 90%;
 }
 
 .enterDiv {
-	position: absolute;
-	left: 33%;
-	top: 12%;
-	width: 30%;
-	height: 84%;
-	text-align: center;
+    position: absolute;
+    left: 33%;
+    top: 12%;
+    width: 30%;
+    height: 84%;
+    text-align: center;
 }
 
 .mainContainerDiv {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .center-vertical {
-	position: absolute;
-	top: 25%;
-	height: 50%;
-	left: 0;
-	width: 100%;
+    position: absolute;
+    top: 25%;
+    height: 50%;
+    left: 0;
+    width: 100%;
 }
 
 .double-button-div {
-	position: absolute;
-	top:5%;
-	left : 5%;
-	height:90%;
-	width: 90%;
-	border-radius: 15px;
-	/*-moz-border-radius: 5px;*/
-	/*-webkit-border-radius: 5px;*/
-	border: 1px solid #37373c;
-	background-color: #FFFFFF;
-	overflow: hidden;
-	margin: 1% 1%;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    height: 90%;
+    width: 90%;
+    border-radius: 15px;
+    /*-moz-border-radius: 5px;*/
+    /*-webkit-border-radius: 5px;*/
+    border: 1px solid #37373c;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    margin: 1% 1%;
 }
 
 .double-button-inside-left-div {
-	position: absolute;
-	top:0;
-	left : 0;
-	height:100%;
-	width: 50%;
-	border-radius: 15px;
-	/*-moz-border-radius: 5px;*/
-	/*-webkit-border-radius: 5px;*/
-	border-right: 0px solid #37373c;
-	background-color: #FFFFFF;
-	overflow: hidden;
-	text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    border-radius: 15px;
+    /*-moz-border-radius: 5px;*/
+    /*-webkit-border-radius: 5px;*/
+    border-right: 0px solid #37373c;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    text-align: center;
 }
 
 .double-button-inside-right-div {
-	position: absolute;
-	top:0;
-	left : 50%;
-	height:100%;
-	width: 50%;
-	border-radius: 15px;
-	/*-moz-border-radius: 5px;*/
-	/*-webkit-border-radius: 5px;*/
-	border-left: 0px solid #37373c;
-	background-color: #FFFFFF;
-	overflow: hidden;
-	text-align: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 50%;
+    border-radius: 15px;
+    /*-moz-border-radius: 5px;*/
+    /*-webkit-border-radius: 5px;*/
+    border-left: 0px solid #37373c;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    text-align: center;
 }
 
 .double-button-selected {
-	background-color: #DDDDDD;
-	/*box-shadow: inset 0 0 0 1px rgba(108, 48, 0, 0.92),inset 0 5px 30px rgba(108, 48, 0, 0.92);*/
+    background-color: #DDDDDD;
+    /*box-shadow: inset 0 0 0 1px rgba(108, 48, 0, 0.92),inset 0 5px 30px rgba(108, 48, 0, 0.92);*/
 }
 
 .double-button-centered {
-	position: absolute;
-	left: 40%;
-	width: 35%;
-	margin-left: auto;
-	margin-right: auto;
-	height: 5%;
+    position: absolute;
+    left: 40%;
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 5%;
 }
 
-.headSpace{
-	height: 8%;
+.headSpace {
+    height: 8%;
 }
 
 .plainListDiv {
-	position: absolute;
-	top:8%;
-	left: 20%;
-	width: 60%;
-	height: 50%;
-	margin-left: auto;
-	margin-right: auto;
+    position: absolute;
+    top: 8%;
+    left: 20%;
+    width: 60%;
+    height: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .enterForm {
-	position: absolute;
-	top: 8%;
-	padding-right: 3%;
-	width: 100%;
-	height: 100%;
-	margin-left: auto;
-	margin-right: auto;
+    position: absolute;
+    top: 8%;
+    padding-right: 3%;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .exploreFormDiv {
-	position: absolute;
-	top: 8%;
-	padding-right: 3%;
-	width: 100%;
-	height: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	visibility: hidden;
+    position: absolute;
+    top: 8%;
+    padding-right: 3%;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    visibility: hidden;
 }
 
 .imgDiv {
-	position: absolute;
-	top:8%;
-	margin-left: auto;
-	margin-right: auto;
-	visibility: hidden;
+    position: absolute;
+    top: 8%;
+    margin-left: auto;
+    margin-right: auto;
+    visibility: hidden;
 }
 
-.axisText{
-	text-anchor: middle;
-	font-family: arial;
+.axisText {
+    text-anchor: middle;
+    font-family: arial;
 }
 
-.axisText.y{
-	text-anchor: end;
-	dominant-baseline: middle;
+.axisText.y {
+    text-anchor: end;
+    dominant-baseline: middle;
 }
 
-.MosaicSliderBar{
-	fill: #cccccc;
+.MosaicSliderBar {
+    fill: #cccccc;
 }
 
-.MosaicSliderHandle{
-	fill: #666666;
+.MosaicSliderHandle {
+    fill: #666666;
 }
 
-.sliderText{
-	dominant-baseline: middle;
+.sliderText {
+    dominant-baseline: middle;
 }
 
-.mosaicSVGContainer{
-	position: absolute;
-	left: 0;
-	height: 100%;
-	width: 100%;
+.mosaicSVGContainer {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
 }
 
-.mosaicListContainer{
-	position: absolute;
-	left: 0%;
-	height: 100%;
-	width: 0%;
+.mosaicListContainer {
+    position: absolute;
+    left: 0%;
+    height: 100%;
+    width: 0%;
 }
 
-.mosaicListElement{
-	font-family: arial;
-	text-align: center;
-	vertical-align: middle;
-	border-radius: 10px;
-	width: 90%;
-	left: 5%;
-	border: solid 1px black;
+.mosaicListElement {
+    font-family: arial;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 10px;
+    width: 90%;
+    left: 5%;
+    border: solid 1px black;
 }
 
-.mosaicListElement:hover{
-	background-color: lightblue;
+.mosaicListElement:hover {
+    background-color: lightblue;
 }
 
-.mosaicBackButtonDiv{
+.mosaicBackButtonDiv {
     position: absolute;
     left: 4%;
     margin-left: 10px;
-		top: -4%;
+    top: -4%;
     height: 13%;
     width: 10%;
     text-align: center;
@@ -618,194 +621,219 @@ circle {
 }
 
 .mosaicBackButtonDiv.showing {
-	border: 2px solid rgba(36, 242, 242, 0.5);
+    border: 2px solid rgba(36, 242, 242, 0.5);
 }
 
 .kaplanLine {
-	opacity: 0.7;
+    opacity: 0.7;
 }
 
-.kaplanBox{
-	opacity: 0.4;
+.kaplanBox {
+    opacity: 0.4;
 }
 
-.kaplanLegendDiv{
-	position: absolute;
-	top: 0;
-	left: 80%;
-	width: 25%;
-	white-space: nowrap;
-
-	font-size: 1.4vmin;
+.kaplanLegendDiv {
+    position: absolute;
+    top: 0;
+    left: 80%;
+    width: 25%;
+    white-space: nowrap;
+    font-size: 1.4vmin;
 }
 
-.kaplanChooserDiv{
-	position: absolute;
-	top: 0;
-	left: 40%;
-	width: 20%;
+.kaplanChooserDiv {
+    position: absolute;
+    top: 0;
+    left: 40%;
+    width: 20%;
 }
 
-.color-box{
-	/*width: 10px;
+.color-box {
+    /*width: 10px;
 	height: 10px;
 	margin-left: 3px;*/
-	display: inline-block;
-
-	width: 1.2vmin;
-	height: 1.2vmin;
-	margin-left: 0.6vmin;
+    display: inline-block;
+    width: 1.2vmin;
+    height: 1.2vmin;
+    margin-left: 0.6vmin;
 }
 
-.filterTitle{
-	display: inline-block;
-	margin: 2px;
-	margin-left: 10px;
-	border-radius: 5px;
-	padding: 5px;
-	/*background-color: #0089e0;*/
-  background-color: #a6a6a6;
-	/*color: #fff;*/
-	color: black;
-	font-size: 1vmin;
-	cursor: pointer;
-	float: left;
+.filterTitle {
+    display: inline-block;
+    margin: 2px;
+    margin-left: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    /*background-color: #0089e0;*/
+    background-color: #a6a6a6;
+    /*color: #fff;*/
+    color: black;
+    font-size: 1vmin;
+    cursor: pointer;
+    float: left;
 }
 
-.starPlotAxis{
+.starPlotAxis {
     stroke-width: 10;
     stroke: rgba(1, 1, 1, 0.1);
 }
 
-.knnContent{
+.knnContent {
     position: absolute;
-    top:5%;
+    top: 5%;
     width: 50%;
     height: 95%;
     left: 50%;
 }
 
-.knnHeader{
+.knnHeader {
     position: absolute;
-    top:0%;
+    top: 0%;
     left: 20%;
-
-		width: 40%;
-		/*height: 2vmin;*/
+    width: 40%;
+    /*height: 2vmin;*/
 }
 
-.knnHeaderList{
+.knnHeaderList {
     position: absolute;
-    top:40%;
-		left: 0;
-
+    top: 40%;
+    left: 0;
     width: 50%;
     height: 20%;
-
-		/*width: 5vmin;
+    /*width: 5vmin;
 		height: 2vmin;*/
-
     text-align: right;
 }
 
-.knnHeaderElem{
+.knnHeaderElem {
     position: absolute;
-    top:10%;
-		left: 10%;
-
+    top: 10%;
+    left: 10%;
     width: 100%;
     height: 19%;
-
     font-size: 120%;
 }
 
-select, option {
-	width: 8vmin;
-	height: 2vmin;
-
-	font-size: 1.3vmin;
+select,
+option {
+    width: 8vmin;
+    height: 2vmin;
+    font-size: 1.3vmin;
 }
 
-.knnLegendDiv{
+.knnLegendDiv {
     position: absolute;
-    top:0%;
+    top: 0%;
     width: 40%;
     height: 100%;
     left: 10%;
 }
 
-.listEl{
-	cursor: ns-resize;
+.listEl {
+    cursor: ns-resize;
 }
 
-.starPlotPath{
+.starPlotPath {
     stroke: black;
     fill: orange;
 }
 
 .kiviatLabel {
-	pointer-events: none;
-	text-anchor: middle;
-	fill: black;
-	stroke: white;
-	stroke-opacity: 0.6;
-	stroke-width: 3px;
+    pointer-events: none;
+    text-anchor: middle;
+    fill: black;
+    stroke: white;
+    stroke-opacity: 0.6;
+    stroke-width: 3px;
 }
 
-.nomogram-controls {
-	/* border: solid 2px rgba(0, 0, 0, 0.5); */
-	border-radius: 5px;
-	opacity: 0;
-	transition: opacity 0.5s;
-	position: absolute;
-	top: 8%;
-	left: 26.5%;
-	width: 14%;
-	height: 33%;
-	padding: 5px;
+.control-popup {
+    /* border: solid 2px rgba(0, 0, 0, 0.5); */
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    position: absolute;
+    padding: 5px;
+    z-index: 100;
+    pointer-events: none;
 }
 
-.nomogram-controls.open {
-	opacity: 1;
+.control-popup.open {
+    opacity: 1;
+    pointer-events: initial;
 }
 
-.nomogram-controls>.title {
-	position: absolute;
-	width: 100%;
-	text-align: center;
-	left: -2px;
-	/* transform: translateY(-120%); */
-	top: 0;
-	font-size: 2vmin;
-	border-radius: 5px 5px 0 0;
-	/* border-top: 2px solid rgba(0, 0, 0, 0.5);
+.control-popup>.title {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    left: -2px;
+    /* transform: translateY(-120%); */
+    top: 0;
+    font-size: 2vmin;
+    border-radius: 5px 5px 0 0;
+    /* border-top: 2px solid rgba(0, 0, 0, 0.5);
 	border-left: 2px solid rgba(0, 0, 0, 0.5);
 	border-right: 2px solid rgba(0, 0, 0, 0.5); */
 }
 
-.nomogram-control-toggle {
-	/* my positioning */
-	position: absolute;
-	left: 42%;
-	top: 7%;
-}
-
-.nomogram-control-toggle.open {
-	border: 2px solid rgba(36, 242, 242, 0.5);
+.settings-button.open {
+    border: 2px solid rgba(36, 242, 242, 0.5);
 }
 
 .settings-button {
-	padding: 0;
-	height: 3%;
-	width: 2%;
-	background: #eee;
-	border: 0.2vmin solid rgba(128, 128, 128, 0.25);
-	border-radius: 0.3vmin;
-	outline: none;
+    padding: 0;
+    height: 3%;
+    width: 2%;
+    background: #eee;
+    border: 0.2vmin solid rgba(128, 128, 128, 0.25);
+    border-radius: 0.3vmin;
+    outline: none;
 }
 
 .settings-button>.fa-wrench {
-	/* my positioning */
-	margin-top: 1vmin;
-	font-size: 1.5vmin;
+    /* my positioning */
+    margin-top: 1vmin;
+    font-size: 1.5vmin;
+}
+
+.nomogram-controls {
+    top: 8%;
+    left: 26.5%;
+    width: 14%;
+    height: 33%;
+}
+
+.nomogram-control-toggle {
+    /* my positioning */
+    position: absolute;
+    left: 42%;
+    top: 7%;
+}
+
+.knn-controls {
+    top: 1%;
+    left: 63%;
+    width: 10%;
+    height: 30%;
+
+    background: rgba(255, 255, 255, 0.95);
+    border: 1.25px solid rgba(128, 128, 128, 0.25)
+}
+
+.knn-controls .buttonWrapper {
+    /* stroke: white; */
+    top: 12%;
+    width: 100%;
+}
+
+.knn-controls .button-wrapper label {
+	display: block;
+	width: 100%;
+}
+
+.knn-control-toggle {
+	position: absolute;
+	top: 1.25%;
+	left: 60.75%;
 }

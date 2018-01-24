@@ -49,7 +49,7 @@ var copyAllData;  // 12.9.16 pass csv to it for func applyKnnFilters
 //Called onload
 function init(){
 
-	setupNomogramControlVisibility();
+	setupControlVisibility();
 
 	d3.select(".mosaicBackButtonDiv")
 		.on("mouseover", function(d) {
@@ -129,6 +129,7 @@ function init(){
 				}
 			});
 
+			// this is used for a deep copy...
 			axesDomain = JSON.parse(JSON.stringify(dataDomain));
 			axesKnnDomain = JSON.parse(JSON.stringify(dataDomain));
 			axesRange = JSON.parse(JSON.stringify(dataRange));
@@ -169,14 +170,14 @@ function init(){
 					// var star = new knnPlot(".rightDiv",csv,filters);  // shouldn't apply the filters to knnPlot
 					// var star = new knnPlot(".rightDiv",csv,[]);
 
-					if (d3.select("#knnFilters").property('checked')) {
-						var star = new knnPlot(".rightDiv",csv,knnFilters);
-					} else if (d3.select("#therapyKnnFilters").property("checked")) {
-						therapyKnnFilters(true);
-						// var star = new knnPlot(".rightDiv",csv,[]);
-					} else {
-						var star = new knnPlot(".rightDiv",csv,[]);
-					}
+					// if (d3.select("#knnFilters").property('checked')) {
+					// 	var star = new knnPlot(".rightDiv",csv,knnFilters);
+					// } else if (d3.select("#therapyKnnFilters").property("checked")) {
+					// 	therapyKnnFilters(true);
+					// 	// var star = new knnPlot(".rightDiv",csv,[]);
+					// } else {
+					// }
+					var star = new knnPlot(".rightDiv",csv,[]);
 
 					changeParallelDisplayed(d3.select("#title4").selectAll('input').property('checked'));
 				}

@@ -128,20 +128,21 @@ function nomogramPlots(where,id,data,allData,categ){
 		Object.keys(axes).forEach((el) => {
 			if(axes[el] && axesMosaic[el]){
 				axesFiltered.push(el);
-			} else if(!axes[el]) {
-				knnFilters.push({"cat": el, "val":allData[selectedID][el]});
-			}
+			} 
+			// else if(!axes[el]) {
+			// 	knnFilters.push({"cat": el, "val":allData[selectedID][el]});
+			// }
 		});
 
 		updatePCP();
 		updateKnnNomogram();
 		changeParallelDisplayed(d3.select("#title4").selectAll('input').property('checked'));
 
-		// update star plots
-		if (d3.select("#knnFilters").property('checked')) {
-			var star = new knnPlot(".rightDiv",allData,knnFilters);
-		}
-		knnFilters = [];
+		// // update star plots
+		// if (d3.select("#knnFilters").property('checked')) {
+		// 	var star = new knnPlot(".rightDiv",allData,knnFilters);
+		// }
+		// knnFilters = [];
 	});
 
 
@@ -206,8 +207,9 @@ function nomogramPlots(where,id,data,allData,categ){
 		// knnFilters = [];
 
 		d3.select("#knnFilters").property("checked", false);
-		d3.select("#therapyKnnFilters").property("checked", true);
-		therapyKnnFilters(d3.select("#therapyKnnFilters").property("checked"));
+		
+		// d3.select("#therapyKnnFilters").property("checked", true);
+		// therapyKnnFilters(d3.select("#therapyKnnFilters").property("checked"));
 
 		// d3.select("#linkSlider").style("visibility", "hidden");
 		// sliderLeft = [0, 1];
