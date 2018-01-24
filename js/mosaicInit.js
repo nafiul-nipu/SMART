@@ -136,6 +136,7 @@ function init(){
 
 			copyAllData = csv;
 
+
 			/************************************************************/
 
 			// Create the visualizations from the loaded data.
@@ -191,6 +192,7 @@ function init(){
 
 				// therapyKnnFilters(d3.select("#therapyKnnFilters").property("checked"));
 
+				allButTherapy(true);
 		});
 	}); // Load data done
 
