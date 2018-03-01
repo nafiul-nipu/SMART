@@ -23,20 +23,24 @@ var App = App || {};
 			resetInfoButtons();
 			console.log("Help open -- infoMode:", infoButtons.infoMode);
 			
-			waitForFinalEvent(function() {
-				// reopen help
-				let helpOpenFunctions = {
-					1: openHelp,
-					2: openAbout, 
-					3: openHelpStar,
-					4: openHelpNomogram,
-					5: openHelpSurvival,
-					6: openHelpMosaic
-				};
-	
-				helpOpenFunctions[infoButtons.infoMode]();
-	
-			}, 500, "resize");
+
+			// use this if you want it to close and stay closed on resize
+			infoButtons.infoMode = 0;
+
+			// use this if you want it to reopen on resize end
+			// waitForFinalEvent(function() {
+			// 	// reopen help
+			// 	let helpOpenFunctions = {
+			// 		1: openHelp,
+			// 		2: openAbout, 
+			// 		3: openHelpStar,
+			// 		4: openHelpNomogram,
+			// 		5: openHelpSurvival,
+			// 		6: openHelpMosaic
+			// 	};
+			// 	helpOpenFunctions[infoButtons.infoMode]();	
+			// }, 500, "resize");
+			
 		}
 		
 
