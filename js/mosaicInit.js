@@ -5,7 +5,41 @@ var App = App || {};
 	App.nomogram = new Nomogram();
 	App.nomogramKnn = new Nomogram();
 
+	var waitForFinalEvent = (function() {
+		var timers = {};
+		return function(callback, ms, uniqueId) {
+			if (!uniqueId) {
+				uniqueId = "Don't call this twice without a uniqueId";
+			}
+			if (timers[uniqueId]) {
+				clearTimeout(timers[uniqueId]);
+			}
+			timers[uniqueId] = setTimeout(callback, ms);
+		};
+	})();
+
 	window.addEventListener("resize", function() {
+		if (infoButtons.infoMode > 0 && infoButtons.infoMode < 7) {
+			resetInfoButtons();
+			console.log("Help open -- infoMode:", infoButtons.infoMode);
+			
+			waitForFinalEvent(function() {
+				// reopen help
+				let helpOpenFunctions = {
+					1: openHelp,
+					2: openAbout, 
+					3: openHelpStar,
+					4: openHelpNomogram,
+					5: openHelpSurvival,
+					6: openHelpMosaic
+				};
+	
+				helpOpenFunctions[infoButtons.infoMode]();
+	
+			}, 500, "resize");
+		}
+		
+
 		if (myNomogram.svg) {
 			myNomogram.resize();
 		}
